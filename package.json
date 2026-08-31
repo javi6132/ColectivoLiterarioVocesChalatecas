@@ -1,0 +1,26 @@
+{
+  "name": "colectivoliterariovoceschalatecas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javi6132/ColectivoLiterarioVocesChalatecas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/javi6132/ColectivoLiterarioVocesChalatecas/issues"
+  },
+  "homepage": "https://github.com/javi6132/ColectivoLiterarioVocesChalatecas#readme",
+  "dependencies": {
+    "astro": "^7.2.9"
+  }
+}
