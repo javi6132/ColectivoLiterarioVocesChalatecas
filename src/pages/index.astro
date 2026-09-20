@@ -1,46 +1,33 @@
 ---
+import Header from "./Componentes/Header.astro";
 ---
 
+
 <html lang="es">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Colectivo Literario Voces Chalatecas" />
+    <meta
+      name="description"
+      content="Colectivo Literario Voces Chalatecas"
+    />
     <title>Voces Chalatecas | Colectivo Literario</title>
   </head>
 
   <body>
+
     <!-- =========================
-        AQUI VA EL HEADER
+         HEADER
     ========================== -->
-    <header class="header">
-      <div class="header-container">
 
-        <!-- Logo o Nombre -->
-        <a href="/" class="logo">
-          <span class="logo-name">Voces Chalatecas</span>
-          <span class="logo-subtitle">COLECTIVO · LITERARIO</span>
-        </a>
-
-        <!-- La Navegación -->
-        <nav class="navigation" aria-label="Navegación principal">
-          <a href="/" class="nav-link active">INICIO</a>
-          <a href="#sobre-mi" class="nav-link">SOBRE MÍ</a>
-          <a href="#libros" class="nav-link">LIBRO</a>
-          <a href="#poesia" class="nav-link">POESÍA</a>
-          <a href="#fotos" class="nav-link">FOTOS</a>
-          <a href="#contacto" class="nav-link">CONTACTO</a>
-        </nav>
-
-      </div>
-    </header>
-
+    <Header />
 
     <!-- =========================
          BANNER O HERO
     ========================== -->
-    <main>
 
+    <main>
       <section class="hero">
 
         <!-- Imagen de fondo -->
@@ -53,7 +40,7 @@
         <div class="hero-container">
           <div class="hero-content">
 
-             <!-- Titulo o texto principal para el banner -->
+            <!-- Título principal -->
             <h1>
               Palabras que<br />
               nacen del alma<br />
@@ -65,7 +52,7 @@
               Escritor · Poeta · Soñador
             </p>
 
-             <!-- Botón para información bibliográfica -->
+            <!-- Botón para información bibliográfica -->
             <a href="#sobre-mi" class="hero-button">
               CONOCE MI HISTORIA
             </a>
@@ -74,9 +61,7 @@
         </div>
 
       </section>
-
     </main>
-
 
     <!-- =========================
          ESTILOS
@@ -85,11 +70,9 @@
     <style>
 
       /* --------------------------------
-         VARIABLES 
-         aquí definimos los colores y tamaños que usaremos en el sitio,
-         según nuestra paleta de colores y tipografía.
-      -------------------------------- */
-      
+         VARIABLES
+         -------------------------------- */
+
       :global(:root) {
         --color-text: #27231f;
         --color-text-light: #5e574f;
@@ -103,7 +86,7 @@
 
       /* --------------------------------
          RESET
-      -------------------------------- */
+         -------------------------------- */
 
       :global(*) {
         box-sizing: border-box;
@@ -127,128 +110,13 @@
 
 
       /* --------------------------------
-         HEADER
-      -------------------------------- */
-
-      .header {
-        position: relative;
-        z-index: 10;
-        width: 100%;
-        background: #f8f5f0;
-      }
-
-      .header-container {
-        width: min(90%, var(--max-width));
-        min-height: 76px;
-        margin: 0 auto;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        gap: 40px;
-      }
-
-
-      /* --------------------------------
-         LOGO
-      -------------------------------- */
-
-      .logo {
-        display: flex;
-        flex-direction: column;
-        flex-shrink: 0;
-      }
-
-      .logo-name {
-        font-size: 1.45rem;
-        line-height: 1.1;
-        letter-spacing: 0.01em;
-      }
-
-      .logo-subtitle {
-        margin-top: 5px;
-
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 0.62rem;
-        letter-spacing: 0.15em;
-
-        color: var(--color-text-light);
-      }
-
-
-      /* --------------------------------
-         NAVEGACIÓN
-      -------------------------------- */
-
-      .navigation {
-        display: flex;
-        align-items: center;
-        gap: 28px;
-      }
-
-      .nav-link {
-        position: relative;
-
-        padding: 28px 0;
-
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 0.75rem;
-        letter-spacing: 0.05em;
-
-        color: var(--color-text);
-
-        transition:
-          color 0.25s ease,
-          opacity 0.25s ease;
-      }
-
-      /* Línea inferior */
-      .nav-link::after {
-        content: "";
-
-        position: absolute;
-        left: 0;
-        bottom: 20px;
-
-        width: 0;
-        height: 1px;
-
-        background: var(--color-accent);
-
-        transition: width 0.25s ease;
-      }
-
-      /* Hover */
-      .nav-link:hover {
-        color: var(--color-accent);
-      }
-
-      .nav-link:hover::after {
-        width: 100%;
-      }
-
-      /* Página actual */
-      .nav-link.active {
-        color: var(--color-text);
-      }
-
-      .nav-link.active::after {
-        width: 100%;
-        background: var(--color-text);
-      }
-
-
-      /* --------------------------------
          HERO
-      -------------------------------- */
+         -------------------------------- */
 
       .hero {
         position: relative;
         min-height: 560px;
-
         overflow: hidden;
-
         display: flex;
         align-items: center;
       }
@@ -259,11 +127,9 @@
       .hero-image {
         position: absolute;
         inset: 0;
-
         background-image: url("/hero.jpg");
         background-size: cover;
         background-position: center;
-
         z-index: 0;
       }
 
@@ -273,7 +139,6 @@
       .hero-overlay {
         position: absolute;
         inset: 0;
-
         background:
           linear-gradient(
             90deg,
@@ -282,7 +147,6 @@
             rgba(248, 245, 240, 0.35) 52%,
             rgba(248, 245, 240, 0) 75%
           );
-
         z-index: 1;
       }
 
@@ -292,7 +156,6 @@
       .hero-container {
         position: relative;
         z-index: 2;
-
         width: min(90%, var(--max-width));
         margin: 0 auto;
       }
@@ -306,7 +169,6 @@
 
       .hero-content h1 {
         margin: 0;
-
         font-size: clamp(2.6rem, 4vw, 4.2rem);
         font-weight: 400;
         line-height: 1.08;
@@ -315,7 +177,6 @@
 
       .hero-subtitle {
         margin: 22px 0 28px;
-
         font-size: 1.15rem;
         color: var(--color-text-light);
       }
@@ -323,23 +184,19 @@
 
       /* --------------------------------
          BOTÓN HERO
-      -------------------------------- */
+         -------------------------------- */
 
       .hero-button {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-
         min-height: 48px;
         padding: 0 24px;
-
         background: var(--color-button);
         color: #ffffff;
-
         font-family: Arial, Helvetica, sans-serif;
         font-size: 0.72rem;
         letter-spacing: 0.08em;
-
         transition:
           background-color 0.25s ease,
           transform 0.25s ease;
@@ -353,17 +210,9 @@
 
       /* --------------------------------
          RESPONSIVE
-      -------------------------------- */
+         -------------------------------- */
 
       @media (max-width: 900px) {
-
-        .navigation {
-          gap: 18px;
-        }
-
-        .nav-link {
-          font-size: 0.68rem;
-        }
 
         .hero-content {
           width: min(100%, 400px);
@@ -374,25 +223,9 @@
 
       /* --------------------------------
          MÓVIL
-      -------------------------------- */
+         -------------------------------- */
 
       @media (max-width: 700px) {
-
-        .header-container {
-          min-height: 70px;
-        }
-
-        /*
-         * Por ahora ocultamos la navegación.
-         * Después construiremos el menú hamburguesa.
-         */
-        .navigation {
-          display: none;
-        }
-
-        .logo-name {
-          font-size: 1.25rem;
-        }
 
         .hero {
           min-height: 650px;
@@ -430,5 +263,8 @@
       }
 
     </style>
+
   </body>
+
 </html>
+```

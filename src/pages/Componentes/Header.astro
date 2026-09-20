@@ -1,0 +1,183 @@
+---
+const path = Astro.url.pathname;
+---
+
+<header class="header">
+  <div class="header-container">
+
+  
+    <a href="/" class="logo">
+      <span class="logo-name">Voces Chalatecas</span>
+      <span class="logo-subtitle">COLECTIVO · LITERARIO</span>
+    </a>
+
+
+    <nav class="navigation" aria-label="Navegación principal">
+      <a href="/" class:list={["nav-link", { active: path === "/" }]}>INICIO</a>
+      <a href="/#sobre-mi" class="nav-link">SOBRE MÍ</a>
+      <a href="/#libros" class="nav-link">LIBRO</a>
+      <a href="/#poesia" class="nav-link">POESÍA</a>
+      <a href="/#fotos" class="nav-link">FOTOS</a>
+      <a href="/contacto" class:list={["nav-link", { active: path.startsWith("/contacto") }]}>CONTACTO</a>
+    </nav>
+
+  </div>
+</header>
+
+<style>
+
+  /* --------------------------------
+     HEADER
+  -------------------------------- */
+
+  .header {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    background: #f8f5f0;
+  }
+
+  .header-container {
+    width: min(90%, var(--max-width));
+    min-height: 76px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 40px;
+  }
+
+
+  /* --------------------------------
+     LOGO
+  -------------------------------- */
+
+  .logo {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+
+  .logo-name {
+    font-size: 1.45rem;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+  }
+
+  .logo-subtitle {
+    margin-top: 5px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+
+    color: var(--color-text-light);
+  }
+
+
+  /* --------------------------------
+     NAVEGACIÓN
+  -------------------------------- */
+
+  .navigation {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-link {
+    position: relative;
+
+    padding: 28px 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+
+    color: var(--color-text);
+
+    transition:
+      color 0.25s ease,
+      opacity 0.25s ease;
+  }
+
+  /* Línea inferior */
+  .nav-link::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--color-accent);
+
+    transition: width 0.25s ease;
+  }
+
+  /* Hover */
+  .nav-link:hover {
+    color: var(--color-accent);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Página actual */
+  .nav-link.active {
+    color: var(--color-text);
+  }
+
+  .nav-link.active::after {
+    width: 100%;
+    background: var(--color-text);
+  }
+
+
+  /* --------------------------------
+     RESPONSIVE
+  -------------------------------- */
+
+  @media (max-width: 900px) {
+
+    .navigation {
+      gap: 18px;
+    }
+
+    .nav-link {
+      font-size: 0.68rem;
+    }
+
+  }
+
+
+  /* --------------------------------
+     MÓVIL
+  -------------------------------- */
+
+  @media (max-width: 700px) {
+
+    .header-container {
+      min-height: 70px;
+    }
+
+    /*
+     * Por ahora ocultamos la navegación.
+     * Después construiremos el menú hamburguesa.
+     */
+    .navigation {
+      display: none;
+    }
+
+    .logo-name {
+      font-size: 1.25rem;
+    }
+
+  }
+
+</style>
