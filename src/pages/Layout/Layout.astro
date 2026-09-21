@@ -1,6 +1,7 @@
 ---
 
 import Header from "../Componentes/Header.astro";
+import Footer from "../Componentes/Footer.astro"; 
 
 const { title = "Voces Chalatecas | Colectivo Literario" } = Astro.props;
 ---
@@ -22,6 +23,7 @@ const { title = "Voces Chalatecas | Colectivo Literario" } = Astro.props;
     <main>
       <slot />
     </main>
+    <Footer />
   </body>
 </html>
 
