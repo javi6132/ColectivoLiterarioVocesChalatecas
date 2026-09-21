@@ -1,0 +1,386 @@
+---
+import Layout from "./Layout/Layout.astro";
+---
+
+<Layout title="Contacto | Voces Chalatecas">
+  <section class="contacto" id="contacto">
+    <div class="contacto-container">
+
+      <h1>Contacto</h1>
+
+      <div class="contacto-grid">
+
+        <!-- IMAGEN -->
+        <div class="retrato">
+          <img
+            src="/imagenes/contacto.jpg"
+            alt="Retrato de Voces Chalatecas"
+          />
+        </div>
+
+        <!-- FORMULARIO -->
+        <form
+          class="contacto-form"
+          action="https://formspree.io/f/xoevewan"
+          method="POST"
+        >
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            required
+          />
+
+          <label for="email">Correo</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+          />
+
+          <label for="mensaje">Mensaje</label>
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            rows="8"
+            required
+          ></textarea>
+
+          <button type="submit">
+            ENVIAR MENSAJE
+          </button>
+        </form>
+
+      </div>
+
+      <!-- INFORMACIÓN DE CONTACTO -->
+      <div class="contacto-info">
+
+        <p class="contacto-intro">
+          ¿Quieres escribirnos, invitarnos a un evento o compartir tu voz
+          con el colectivo? Estaremos felices de leerte.
+        </p>
+
+        <h2>Escríbenos</h2>
+
+        <div class="contacto-datos">
+
+          <!-- CORREO Y UBICACIÓN -->
+          <div class="datos-izquierda">
+
+            <p class="dato">
+              <strong>Correo:</strong>
+              <a href="mailto:tucorreo@ejemplo.com">
+                tucorreo@ejemplo.com
+              </a>
+            </p>
+
+            <p class="dato">
+              <strong>Ubicación:</strong>
+              <span>Chalatenango, El Salvador</span>
+            </p>
+
+          </div>
+
+          <!-- REDES SOCIALES -->
+          <div class="redes">
+
+            <strong>Redes:</strong>
+
+            <div class="redes-iconos">
+
+              <!-- FACEBOOK -->
+              <a
+                href="https://www.facebook.com/gerardo.alfaro.14"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                class="red-link"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+              </a>
+
+              <!-- INSTAGRAM -->
+              <a
+                href="https://www.instagram.com/alfarero7/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                class="red-link"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect
+                    x="2"
+                    y="2"
+                    width="20"
+                    height="20"
+                    rx="5"
+                    ry="5"
+                  />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line
+                    x1="17.5"
+                    y1="6.5"
+                    x2="17.51"
+                    y2="6.5"
+                  />
+                </svg>
+              </a>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contacto {
+    padding: 30px 0 80px;
+  }
+
+  .contacto-container {
+    width: min(90%, 1100px);
+    margin: 0 auto;
+  }
+
+  h1 {
+    margin: 0 0 15px;
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 400;
+  }
+
+  .contacto-grid {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 70px;
+    align-items: start;
+    margin-bottom: 45px;
+  }
+
+  /* IMAGEN */
+  .retrato {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .retrato img {
+    width: 100%;
+    height: 450px;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* FORMULARIO */
+  .contacto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .contacto-form label {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 4px;
+  }
+
+  .contacto-form input,
+  .contacto-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 1px solid #cfc6bb;
+    background: #fff;
+    font: inherit;
+    border-radius: 0;
+  }
+
+  .contacto-form input {
+    height: 48px;
+    margin-bottom: 15px;
+  }
+
+  .contacto-form textarea {
+    min-height: 180px;
+    resize: vertical;
+  }
+
+  .contacto-form button {
+    margin-top: 15px;
+    min-height: 48px;
+    border: 0;
+    background: var(--color-button);
+    color: #fff;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+  }
+
+  .contacto-form button:hover {
+    background: var(--color-button-hover);
+  }
+
+  /* INFORMACIÓN */
+  .contacto-info {
+    width: 100%;
+    max-width: 900px;
+    text-align: left;
+  }
+
+  .contacto-intro {
+    margin: 0 0 25px;
+    line-height: 1.7;
+    max-width: 700px;
+  }
+
+  .contacto-info h2 {
+    margin: 0 0 20px;
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  /* CORREO / UBICACIÓN / REDES */
+  .contacto-datos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+  }
+
+  .dato {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 14px;
+    line-height: 1.7;
+  }
+
+  .dato strong {
+    white-space: nowrap;
+  }
+
+  .dato a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .dato a:hover {
+    text-decoration: underline;
+  }
+
+  /* REDES */
+  .redes {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 0;
+  }
+
+  .redes-iconos {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .red-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: var(--color-accent);
+    border: 1px solid #cfc6bb;
+    border-radius: 50%;
+    text-decoration: none;
+    transition:
+      color 0.25s ease,
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .red-link svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .red-link:hover {
+    color: #fff;
+    background: var(--color-button);
+    border-color: var(--color-button);
+    transform: translateY(-2px);
+  }
+
+  /* TABLET */
+  @media (max-width: 900px) {
+    .contacto-grid {
+      grid-template-columns: 350px 1fr;
+      gap: 40px;
+    }
+
+    .retrato img {
+      height: 430px;
+    }
+  }
+
+  /* MÓVIL */
+  @media (max-width: 800px) {
+    .contacto {
+      padding: 20px 0 60px;
+    }
+
+    .contacto-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .retrato {
+      max-width: 100%;
+    }
+
+    .retrato img {
+      height: auto;
+      max-height: 500px;
+    }
+
+    .contacto-info {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .contacto-datos {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .redes {
+      align-items: flex-start;
+    }
+  }
+</style>
