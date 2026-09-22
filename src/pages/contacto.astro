@@ -21,6 +21,7 @@ import Layout from "./Layout/Layout.astro";
         <!-- FORMULARIO -->
         <form
           class="contacto-form"
+          id="contacto-form"
           action="https://formspree.io/f/xoevewan"
           method="POST"
         >
@@ -29,6 +30,7 @@ import Layout from "./Layout/Layout.astro";
             type="text"
             id="nombre"
             name="nombre"
+            pattern="[A-Za-zÀ-ÖØ-öø-ÿÑñ\s]+"
             required
           />
 
@@ -48,9 +50,17 @@ import Layout from "./Layout/Layout.astro";
             required
           ></textarea>
 
-          <button type="submit">
+          <button type="submit" id="contacto-submit">
             ENVIAR MENSAJE
           </button>
+
+          <!-- Mensajes de estado (ocultos por defecto) -->
+          <p class="form-status form-status--success" role="status" aria-live="polite">
+            ¡Gracias! Tu mensaje fue enviado. Te responderemos pronto.
+          </p>
+          <p class="form-status form-status--error" role="alert" aria-live="assertive">
+            Hubo un problema al enviar tu mensaje. Intenta de nuevo o escríbenos directamente por correo.
+          </p>
         </form>
 
       </div>
@@ -63,6 +73,8 @@ import Layout from "./Layout/Layout.astro";
           con el colectivo? Estaremos felices de leerte.
         </p>
 
+        <div class="divisor"></div>
+
         <h2>Escríbenos</h2>
 
         <div class="contacto-datos">
@@ -72,8 +84,8 @@ import Layout from "./Layout/Layout.astro";
 
             <p class="dato">
               <strong>Correo:</strong>
-              <a href="mailto:tucorreo@ejemplo.com">
-                tucorreo@ejemplo.com
+              <a href="mailto:contacto@vocesChalatecas.org">
+                contacto@vocesChalatecas.org
               </a>
             </p>
 
@@ -101,13 +113,9 @@ import Layout from "./Layout/Layout.astro";
               >
                 <svg
                   viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  fill="currentColor"
                 >
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                  <path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/>
                 </svg>
               </a>
 
@@ -154,6 +162,93 @@ import Layout from "./Layout/Layout.astro";
 
     </div>
   </section>
+
+  <script>
+    const form = document.getElementById("contacto-form") as HTMLFormElement | null;
+    const submitBtn = document.getElementById("contacto-submit") as HTMLButtonElement | null;
+
+    // Mensajes de validación en español para cada campo
+    const mensajesValidacion: Record<string, { vacio: string; invalido?: string }> = {
+      nombre: {
+        vacio: "Por favor escribe tu nombre.",
+        invalido: "El nombre solo puede contener letras y espacios (sin números ni símbolos).",
+      },
+      email: {
+        vacio: "Por favor escribe tu correo electrónico.",
+        invalido: "Ese correo no parece válido. Revisa el formato (ejemplo@correo.com).",
+      },
+      mensaje: { vacio: "Por favor escribe un mensaje." },
+    };
+
+    if (form) {
+      const campos = form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(
+        "input[name], textarea[name]"
+      );
+
+      campos.forEach((campo) => {
+        const textos = mensajesValidacion[campo.name];
+        if (!textos) return;
+
+        const actualizarMensaje = () => {
+          if (campo.validity.valueMissing) {
+            campo.setCustomValidity(textos.vacio);
+          } else if (
+            (campo.validity.typeMismatch || campo.validity.patternMismatch) &&
+            textos.invalido
+          ) {
+            campo.setCustomValidity(textos.invalido);
+          } else {
+            campo.setCustomValidity("");
+          }
+        };
+
+        campo.addEventListener("invalid", actualizarMensaje);
+        campo.addEventListener("input", actualizarMensaje);
+      });
+    }
+
+    // Bloquea números y símbolos mientras se escribe en "Nombre"
+    const campoNombre = document.getElementById("nombre") as HTMLInputElement | null;
+    if (campoNombre) {
+      campoNombre.addEventListener("input", () => {
+        const limpio = campoNombre.value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿÑñ\s]/g, "");
+        if (limpio !== campoNombre.value) {
+          campoNombre.value = limpio;
+        }
+      });
+    }
+
+    if (form && submitBtn) {
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        form.classList.remove("is-success", "is-error");
+
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = "ENVIANDO...";
+
+        try {
+          const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" },
+          });
+
+          if (response.ok) {
+            form.classList.add("is-success");
+            form.reset();
+          } else {
+            form.classList.add("is-error");
+          }
+        } catch (err) {
+          form.classList.add("is-error");
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      });
+    }
+  </script>
 </Layout>
 
 <style>
@@ -170,6 +265,7 @@ import Layout from "./Layout/Layout.astro";
     margin: 0 0 15px;
     font-size: clamp(2.4rem, 4vw, 3.6rem);
     font-weight: 400;
+    letter-spacing: 0.01em;
   }
 
   .contacto-grid {
@@ -177,7 +273,7 @@ import Layout from "./Layout/Layout.astro";
     grid-template-columns: 420px 1fr;
     gap: 70px;
     align-items: start;
-    margin-bottom: 45px;
+    margin-bottom: 70px;
   }
 
   /* IMAGEN */
@@ -191,6 +287,7 @@ import Layout from "./Layout/Layout.astro";
     height: 450px;
     display: block;
     object-fit: cover;
+    object-position: top center;
   }
 
   /* FORMULARIO */
@@ -218,6 +315,20 @@ import Layout from "./Layout/Layout.astro";
     background: #fff;
     font: inherit;
     border-radius: 0;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .contacto-form input:focus,
+  .contacto-form textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+  }
+
+  .contacto-form input:invalid:not(:placeholder-shown),
+  .contacto-form textarea:invalid:not(:placeholder-shown) {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
   }
 
   .contacto-form input {
@@ -239,11 +350,43 @@ import Layout from "./Layout/Layout.astro";
     font-size: 0.72rem;
     letter-spacing: 0.08em;
     cursor: pointer;
-    transition: background-color 0.25s ease;
+    transition: background-color 0.25s ease, opacity 0.25s ease;
   }
 
-  .contacto-form button:hover {
+  .contacto-form button:hover:not(:disabled) {
     background: var(--color-button-hover);
+  }
+
+  .contacto-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  /* MENSAJES DE ESTADO */
+  .form-status {
+    display: none;
+    margin: 4px 0 0;
+    padding: 12px 14px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    border-left: 3px solid transparent;
+  }
+
+  .form-status--success {
+    background: #f4f2ee;
+    border-color: var(--color-button);
+    color: #333;
+  }
+
+  .form-status--error {
+    background: #f4f2ee;
+    border-color: var(--color-accent);
+    color: #333;
+  }
+
+  .contacto-form.is-success .form-status--success,
+  .contacto-form.is-error .form-status--error {
+    display: block;
   }
 
   /* INFORMACIÓN */
@@ -257,6 +400,13 @@ import Layout from "./Layout/Layout.astro";
     margin: 0 0 25px;
     line-height: 1.7;
     max-width: 700px;
+  }
+
+  .divisor {
+    width: 100%;
+    max-width: 700px;
+    border-top: 1px solid #e5e0d8;
+    margin: 0 0 30px;
   }
 
   .contacto-info h2 {
@@ -358,6 +508,7 @@ import Layout from "./Layout/Layout.astro";
     .contacto-grid {
       grid-template-columns: 1fr;
       gap: 40px;
+      margin-bottom: 50px;
     }
 
     .retrato {
