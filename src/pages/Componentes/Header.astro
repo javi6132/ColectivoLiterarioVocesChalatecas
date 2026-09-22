@@ -17,7 +17,7 @@ const path = Astro.url.pathname;
       <a href="/#sobre-mi" class="nav-link">SOBRE MÍ</a>
       <a href="/#libros" class="nav-link">LIBRO</a>
       <a href="/#poesia" class="nav-link">POESÍA</a>
-      <a href="/#fotos" class="nav-link">FOTOS</a>
+      <a href="/fotos" class:list={["nav-link", { active: path.startsWith("/fotos") }]}>FOTOS</a>
       <a href="/contacto" class:list={["nav-link", { active: path.startsWith("/contacto") }]}>CONTACTO</a>
     </nav>
 
