@@ -46,66 +46,76 @@ const fotos = [
   </div>
 
   <script define:vars={{ fotos }}>
-    const items = document.querySelectorAll(".galeria-item");
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-    const btnCerrar = document.getElementById("lightbox-cerrar");
-    const btnPrev = document.getElementById("lightbox-prev");
-    const btnNext = document.getElementById("lightbox-next");
+    function initGaleria() {
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      if (!lightbox || !lightboxImg) return; // no estamos en la página de galería
 
-    let indiceActual = 0;
+      let indiceActual = 0;
 
-    function abrirLightbox(indice) {
-      indiceActual = indice;
-      const foto = fotos[indiceActual];
-      lightboxImg.src = foto.src;
-      lightboxImg.alt = foto.alt;
-      lightbox.classList.add("activo");
-      lightbox.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-    }
+      function mostrarFoto(indice) {
+        indiceActual = (indice + fotos.length) % fotos.length;
+        const foto = fotos[indiceActual];
+        lightboxImg.src = foto.src;
+        lightboxImg.alt = foto.alt;
+      }
 
-    function cerrarLightbox() {
-      lightbox.classList.remove("activo");
-      lightbox.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-    }
+      function abrirLightbox(indice) {
+        mostrarFoto(indice);
+        lightbox.classList.add("activo");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
 
-    function mostrarAnterior() {
-      indiceActual = (indiceActual - 1 + fotos.length) % fotos.length;
-      const foto = fotos[indiceActual];
-      lightboxImg.src = foto.src;
-      lightboxImg.alt = foto.alt;
-    }
+      function cerrarLightbox() {
+        lightbox.classList.remove("activo");
+        lightbox.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
 
-    function mostrarSiguiente() {
-      indiceActual = (indiceActual + 1) % fotos.length;
-      const foto = fotos[indiceActual];
-      lightboxImg.src = foto.src;
-      lightboxImg.alt = foto.alt;
-    }
+     
+      // listener vive en "document" y no en cada botón 
+      document.addEventListener("click", (e) => {
+        const item = e.target.closest(".galeria-item");
+        if (item) {
+          const indice = parseInt(item.getAttribute("data-index"), 10);
+          abrirLightbox(indice);
+          return;
+        }
 
-    items.forEach((item) => {
-      item.addEventListener("click", () => {
-        const indice = parseInt(item.getAttribute("data-index"), 10);
-        abrirLightbox(indice);
+        if (e.target.closest("#lightbox-cerrar")) {
+          cerrarLightbox();
+          return;
+        }
+
+        if (e.target.closest("#lightbox-prev")) {
+          mostrarFoto(indiceActual - 1);
+          return;
+        }
+
+        if (e.target.closest("#lightbox-next")) {
+          mostrarFoto(indiceActual + 1);
+          return;
+        }
+
+        // clic en el fondo oscuro 
+        if (e.target === lightbox) {
+          cerrarLightbox();
+        }
       });
-    });
 
-    btnCerrar.addEventListener("click", cerrarLightbox);
-    btnPrev.addEventListener("click", mostrarAnterior);
-    btnNext.addEventListener("click", mostrarSiguiente);
+      document.addEventListener("keydown", (e) => {
+        if (!lightbox.classList.contains("activo")) return;
+        if (e.key === "Escape") cerrarLightbox();
+        if (e.key === "ArrowLeft") mostrarFoto(indiceActual - 1);
+        if (e.key === "ArrowRight") mostrarFoto(indiceActual + 1);
+      });
+    }
 
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) cerrarLightbox();
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (!lightbox.classList.contains("activo")) return;
-      if (e.key === "Escape") cerrarLightbox();
-      if (e.key === "ArrowLeft") mostrarAnterior();
-      if (e.key === "ArrowRight") mostrarSiguiente();
-    });
+  
+    initGaleria();
+    // transición de página de Astro.
+    document.addEventListener("astro:page-load", initGaleria);
   </script>
 </Layout>
 

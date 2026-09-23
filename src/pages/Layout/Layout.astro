@@ -1,7 +1,7 @@
 ---
-
 import Header from "../Componentes/Header.astro";
-import Footer from "../Componentes/Footer.astro"; 
+import Footer from "../Componentes/Footer.astro";
+import { ClientRouter } from "astro:transitions";
 
 const { title = "Voces Chalatecas | Colectivo Literario" } = Astro.props;
 ---
@@ -15,12 +15,13 @@ const { title = "Voces Chalatecas | Colectivo Literario" } = Astro.props;
       content="Colectivo Literario Voces Chalatecas"
     />
     <title>{title}</title>
+    <ClientRouter />
   </head>
 
   <body>
     <Header />
 
-    <main>
+    <main transition:name="contenido" transition:animate="none">
       <slot />
     </main>
     <Footer />
@@ -56,5 +57,49 @@ const { title = "Voces Chalatecas | Colectivo Literario" } = Astro.props;
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  /* ===== TRANSICIÓN ENTRE PÁGINAS ===== */
+  
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+
+  @keyframes salida-contenido {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes entrada-contenido {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  ::view-transition-old(contenido) {
+    animation: 0.35s ease-out both salida-contenido;
+  }
+
+  ::view-transition-new(contenido) {
+    animation: 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both entrada-contenido;
+  }
+
+ 
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(contenido),
+    ::view-transition-new(contenido) {
+      animation: none !important;
+    }
   }
 </style>
