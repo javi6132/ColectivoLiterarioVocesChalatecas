@@ -1,0 +1,270 @@
+---
+import Layout from "./Layout/Layout.astro";
+---
+
+<Layout title="Sobre mí | Voces Chalatecas">
+  <section class="sobre-mi" id="sobre-mi">
+    <div class="sobre-mi-container">
+
+      <h1>Sobre mí</h1>
+
+      <div class="sobre-mi-grid">
+
+        <!-- FOTO -->
+        <div class="retrato">
+          <img
+            src="/imagenes/galeria2.jpg"
+            alt="Retrato de Gerardo Escobar"
+          />
+        </div>
+
+        <!-- TEXTO PRINCIPAL -->
+        <div class="sobre-mi-texto">
+          <p class="intro">
+            Soy [tu nombre], [una breve frase que te describa: escritor,
+            fundador del colectivo, gestor cultural, etc.] de Chalatenango,
+            El Salvador.
+          </p>
+
+          <p>
+            [Aquí va un párrafo contando tu historia: cómo empezaste a
+            escribir, qué te motivó a fundar o unirte a Voces Chalatecas,
+            y qué buscas compartir con este proyecto. Escribe en primera
+            persona y con un tono cercano.]
+          </p>
+
+          <p>
+            [Segundo párrafo opcional: tu formación, tus influencias
+            literarias, proyectos anteriores, o lo que te distingue como
+            creador dentro del colectivo.]
+          </p>
+        </div>
+
+      </div>
+
+      <!-- CITA DESTACADA -->
+      <blockquote class="cita">
+        “[Una frase corta tuya o que te represente — una cita, un verso,
+        una idea que resuma tu forma de ver la escritura o Chalatenango.]”
+      </blockquote>
+
+      <div class="divisor"></div>
+
+      <!-- TRAYECTORIA -->
+      <div class="trayectoria">
+        <h2>Trayectoria</h2>
+
+        <ul class="lista-trayectoria">
+          <li>
+            <span class="anio">2023</span>
+            <span class="detalle">[Hito importante: publicación, evento, fundación del colectivo, etc.]</span>
+          </li>
+          <li>
+            <span class="anio">2024</span>
+            <span class="detalle">[Otro hito o reconocimiento relevante.]</span>
+          </li>
+          <li>
+            <span class="anio">2025</span>
+            <span class="detalle">[Proyecto actual o más reciente.]</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- LLAMADO A LA ACCIÓN -->
+      <div class="cta">
+        <p>¿Quieres conocer más sobre mi trabajo o conversar?</p>
+        <a href="/contacto" class="cta-boton">Escríbeme</a>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sobre-mi {
+    padding: 30px 0 80px;
+  }
+
+  .sobre-mi-container {
+    width: min(90%, 1100px);
+    margin: 0 auto;
+  }
+
+  h1 {
+    margin: 0 0 15px;
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  /* GRID PRINCIPAL */
+  .sobre-mi-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 70px;
+    align-items: start;
+    margin-bottom: 50px;
+  }
+
+  .retrato {
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .retrato img {
+    width: 100%;
+    height: 460px;
+    display: block;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .sobre-mi-texto {
+    max-width: 650px;
+  }
+
+  .sobre-mi-texto .intro {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin: 0 0 20px;
+    color: var(--color-text);
+  }
+
+  .sobre-mi-texto p {
+    line-height: 1.75;
+    margin: 0 0 18px;
+    color: var(--color-text-light);
+  }
+
+  /* CITA */
+  .cita {
+    margin: 50px 0;
+    padding: 30px 0 30px 30px;
+    border-left: 3px solid var(--color-accent);
+    font-size: 1.3rem;
+    font-style: italic;
+    line-height: 1.6;
+    max-width: 800px;
+    color: var(--color-text);
+  }
+
+  .divisor {
+    width: 100%;
+    max-width: 700px;
+    border-top: 1px solid #e5e0d8;
+    margin: 0 0 40px;
+  }
+
+  /* TRAYECTORIA */
+  .trayectoria h2 {
+    margin: 0 0 25px;
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  .lista-trayectoria {
+    list-style: none;
+    margin: 0 0 60px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 750px;
+  }
+
+  .lista-trayectoria li {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 20px;
+    align-items: baseline;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e5e0d8;
+  }
+
+  .anio {
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .detalle {
+    line-height: 1.6;
+    color: var(--color-text-light);
+  }
+
+  /* LLAMADO A LA ACCIÓN */
+  .cta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .cta p {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .cta-boton {
+    display: inline-block;
+    padding: 14px 28px;
+    background: var(--color-button);
+    color: #fff;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background-color 0.25s ease;
+  }
+
+  .cta-boton:hover {
+    background: var(--color-button-hover);
+  }
+
+  /* TABLET */
+  @media (max-width: 900px) {
+    .sobre-mi-grid {
+      grid-template-columns: 320px 1fr;
+      gap: 40px;
+    }
+
+    .retrato img {
+      height: 420px;
+    }
+  }
+
+  /* MÓVIL */
+  @media (max-width: 800px) {
+    .sobre-mi {
+      padding: 20px 0 60px;
+    }
+
+    .sobre-mi-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .retrato {
+      max-width: 100%;
+    }
+
+    .retrato img {
+      height: auto;
+      max-height: 480px;
+    }
+
+    .sobre-mi-texto {
+      max-width: 100%;
+    }
+
+    .cita {
+      font-size: 1.1rem;
+      padding: 20px 0 20px 20px;
+    }
+
+    .lista-trayectoria li {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+  }
+</style>
