@@ -1,12 +1,40 @@
 ---
 import Layout from "./Layout/Layout.astro";
 
-// Edita aquí los textos y rutas del inicio
+// =====================================================
+// EDITA AQUÍ LOS CONTENIDOS DEL INICIO
+// =====================================================
+
+const frase =
+  "[Una frase tuya que resuma el espíritu del colectivo y de tu escritura.]";
+
+const sobreMi = {
+  titulo: "Una voz nacida en Chalatenango",
+  texto:
+    "[Un párrafo corto: quién eres, cómo empezaste a escribir y qué buscas compartir con Voces Chalatecas.]",
+  imagen: "/imagenes/galeria2.jpg",
+};
+
+const libro = {
+  titulo: "Fronteras Prohibidas",
+  texto:
+    "[Una sinopsis breve de dos o tres líneas que invite a conocer el libro.]",
+  portada: "/imagenes/poesia/FronterasProhibidas.jpg",
+};
+
+const poema = {
+  texto:
+    "La inspiración se halla en todas partes; no la busquéis sólo en el corazón de un hombre herido, o en los amores febriles que arrebatan la vida.",
+  // Si es una cita de otro autor, escribe aquí su nombre. Si queda vacío, no se muestra.
+  autor: "",
+};
+
 const galeriaPreview = [
   { src: "/imagenes/contacto.jpg", alt: "Foto del colectivo 1" },
   { src: "/imagenes/galeria1.jpg", alt: "Foto del colectivo 2" },
   { src: "/imagenes/galeria2s.jpg", alt: "Foto del colectivo 3" },
 ];
+
 ---
 
 <Layout title="Voces Chalatecas | Colectivo Literario">
@@ -21,7 +49,10 @@ const galeriaPreview = [
     <div class="hero-container">
       <div class="hero-content">
 
-        <p class="hero-eyebrow">Colectivo literario · Chalatenango</p>
+        <p class="hero-eyebrow">
+          <span class="linea"></span>
+          Colectivo literario · Chalatenango
+        </p>
 
         <h1>
           Palabras que<br />
@@ -47,35 +78,33 @@ const galeriaPreview = [
   ========================== -->
   <section class="frase">
     <div class="contenedor">
-      <p class="frase-texto reveal">
-        “[Una frase tuya que resuma el espíritu del colectivo y de tu escritura.]”
-      </p>
+      <span class="comilla" aria-hidden="true">“</span>
+      <p class="frase-texto reveal">{frase}</p>
     </div>
   </section>
 
 
   <!-- =========================
-       SOBRE MÍ (VISTA PREVIA)
+       SOBRE MÍ
   ========================== -->
   <section class="bloque">
-    <div class="contenedor bloque-grid">
+    <div class="contenedor bloque-grid tarjeta">
 
-      <div class="bloque-imagen reveal">
+      <div class="marco reveal">
         <img
-          src="/imagenes/galeria2.jpg"
+          src={sobreMi.imagen}
           alt="Retrato del autor"
           loading="lazy"
         />
       </div>
 
-      <div class="bloque-texto reveal">
-        <p class="etiqueta">Sobre mí</p>
-        <h2>Una voz nacida en Chalatenango</h2>
-        <p>
-          [Un párrafo corto: quién eres, cómo empezaste a escribir y qué
-          buscas compartir con Voces Chalatecas.]
-        </p>
-        <a href="/sobre-mi" class="enlace-flecha">Leer mi historia <span aria-hidden="true">→</span></a>
+      <div class="bloque-texto reveal" style="--d: 120ms">
+        <p class="etiqueta"><span class="num">01</span> Sobre mí</p>
+        <h2>{sobreMi.titulo}</h2>
+        <p>{sobreMi.texto}</p>
+        <a href="/sobre-mi" class="enlace-flecha">
+          Leer mi historia <span aria-hidden="true">→</span>
+        </a>
       </div>
 
     </div>
@@ -85,26 +114,25 @@ const galeriaPreview = [
   <!-- =========================
        LIBRO DESTACADO
   ========================== -->
-  <section class="bloque bloque-oscuro">
-    <div class="contenedor bloque-grid bloque-grid-inverso">
+  <section class="bloque bloque-tono">
+    <div class="contenedor bloque-grid bloque-grid-inverso tarjeta">
 
       <div class="bloque-texto reveal">
-        <p class="etiqueta">Libro</p>
-        <h2>Fronteras Prohibidas</h2>
-        <p>
-          [Una sinopsis breve de dos o tres líneas que invite a conocer el
-          libro.]
-        </p>
-        <a href="/libro" class="enlace-flecha">Conocer el libro <span aria-hidden="true">→</span></a>
+        <p class="etiqueta"><span class="num">02</span> Libro</p>
+        <h2>{libro.titulo}</h2>
+        <p>{libro.texto}</p>
+        <a href="/libro" class="enlace-flecha">
+          Conocer el libro <span aria-hidden="true">→</span>
+        </a>
       </div>
 
-      <div class="bloque-imagen portada reveal">
+      <a href="/libro" class="portada-panel reveal" style="--d: 120ms" aria-label={`Ver el libro ${libro.titulo}`}>
         <img
-          src="imagenes/poesia/FronterasProhibidas.jpg"
-          alt="Portada del libro"
+          src={libro.portada}
+          alt={`Portada del libro ${libro.titulo}`}
           loading="lazy"
         />
-      </div>
+      </a>
 
     </div>
   </section>
@@ -114,35 +142,46 @@ const galeriaPreview = [
        POESÍA
   ========================== -->
   <section class="poesia">
-    <div class="contenedor reveal">
-      <p class="etiqueta">Poesía</p>
-      <p class="poesia-verso">
-        La inspiración se halla en todas partes; no la busquéis sólo en el corazón de un hombre herido,
-o en los amores febriles que arrebatan la vida.
+    <div class="contenedor poesia-caja tarjeta reveal">
+      <p class="etiqueta centrada"><span class="num">03</span> Poesía</p>
+      <span class="ornamento" aria-hidden="true"></span>
 
-      </p>
-      <a href="/poesia" class="enlace-flecha">Leer más poesía <span aria-hidden="true">→</span></a>
+      <blockquote class="poesia-bloque">
+        <p class="poesia-verso">{poema.texto}</p>
+        {poema.autor && <footer class="poesia-autor">— {poema.autor}</footer>}
+      </blockquote>
+
+      <a href="/poesia" class="enlace-flecha">
+        Leer más poesía <span aria-hidden="true">→</span>
+      </a>
     </div>
   </section>
 
 
   <!-- =========================
-       GALERÍA (VISTA PREVIA)
+       GALERÍA
   ========================== -->
   <section class="galeria-preview">
     <div class="contenedor">
 
       <div class="seccion-cabecera reveal">
         <div>
-          <p class="etiqueta">Fotos</p>
+          <p class="etiqueta"><span class="num">04</span> Fotos</p>
           <h2>Momentos del colectivo</h2>
         </div>
-        <a href="/fotos" class="enlace-flecha">Ver galería <span aria-hidden="true">→</span></a>
+        <a href="/fotos" class="enlace-flecha">
+          Ver galería <span aria-hidden="true">→</span>
+        </a>
       </div>
 
-      <div class="galeria-tiras">
-        {galeriaPreview.map((foto) => (
-          <a href="/fotos" class="galeria-tira reveal" aria-label="Ver la galería de fotos">
+      <div class="galeria-mosaico">
+        {galeriaPreview.map((foto, i) => (
+          <a
+            href="/fotos"
+            class={`tesela tesela-${i + 1} reveal`}
+            style={`--d: ${i * 110}ms`}
+            aria-label="Ver la galería de fotos"
+          >
             <img src={foto.src} alt={foto.alt} loading="lazy" />
           </a>
         ))}
@@ -156,21 +195,24 @@ o en los amores febriles que arrebatan la vida.
        CONTACTO
   ========================== -->
   <section class="cta">
-    <div class="contenedor cta-contenido reveal">
-      <h2>¿Escribimos juntos?</h2>
-      <p>
-        Invítanos a un evento, comparte tu voz con el colectivo o
-        simplemente escríbenos.
-      </p>
-      <a href="/contacto" class="boton boton-primario">ESCRÍBENOS</a>
+    <div class="contenedor">
+      <div class="cta-contenido tarjeta reveal">
+        <p class="etiqueta centrada etiqueta-clara"><span class="num">05</span> Contacto</p>
+        <h2>¿Escribimos juntos?</h2>
+        <p>
+          Invítanos a un evento, comparte tu voz con el colectivo o
+          simplemente escríbenos.
+        </p>
+        <a href="/contacto" class="boton boton-claro">ESCRÍBENOS</a>
+      </div>
     </div>
   </section>
 
 </Layout>
 
 <script>
-  // Animación suave de aparición al hacer scroll.
-  // Se reinicia en cada navegación (View Transitions de Astro).
+  // Aparición suave al hacer scroll. Se reinicia en cada navegación
+  // (View Transitions de Astro).
   function initReveal() {
     const elementos = document.querySelectorAll<HTMLElement>(".reveal");
     if (!elementos.length) return;
@@ -190,7 +232,7 @@ o en los amores febriles que arrebatan la vida.
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
 
     elementos.forEach((el) => observador.observe(el));
@@ -203,62 +245,184 @@ o en los amores febriles que arrebatan la vida.
 <style>
 
   /* --------------------------------
-     BASE DE LA PÁGINA
+     TOKENS Y BASE
   -------------------------------- */
+
+  :global(:root) {
+    --linea: rgba(39, 35, 31, 0.14);
+    --filete: rgba(138, 117, 97, 0.28);
+    --ease-suave: cubic-bezier(0.16, 1, 0.3, 1);
+  }
 
   .contenedor {
     width: min(90%, var(--max-width));
     margin: 0 auto;
   }
 
+  section {
+    overflow-x: clip;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+
+  /* Etiqueta de sección: "01 — SOBRE MÍ" */
   .etiqueta {
-    margin: 0 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 18px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--color-accent);
   }
 
+  .etiqueta .num {
+    color: var(--color-text);
+    letter-spacing: 0.08em;
+  }
+
+  .etiqueta::after {
+    content: "";
+    width: 44px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  .etiqueta.centrada {
+    justify-content: center;
+  }
+
+  .etiqueta.centrada::before {
+    content: "";
+    width: 44px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
   h2 {
-    margin: 0 0 18px;
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    margin: 0 0 22px;
+    font-size: clamp(2rem, 3.4vw, 2.9rem);
     font-weight: 400;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
   }
 
   .enlace-flecha {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding-bottom: 3px;
+    gap: 10px;
+    padding-bottom: 5px;
     border-bottom: 1px solid var(--color-accent);
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-text);
-    transition: color 0.25s ease, gap 0.25s ease, border-color 0.25s ease;
+    transition: color 0.3s ease, gap 0.3s var(--ease-suave), border-color 0.3s ease;
   }
 
   .enlace-flecha:hover {
     color: var(--color-accent);
-    gap: 14px;
+    gap: 16px;
   }
 
   /* Aparición al hacer scroll */
   .reveal {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(22px);
     transition:
-      opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity 0.9s var(--ease-suave),
+      transform 0.9s var(--ease-suave);
+    transition-delay: var(--d, 0ms);
   }
 
   .reveal.visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+
+  /* --------------------------------
+     TARJETA (contenedor de sección)
+     Papel claro, borde fino, sombra suave y
+     esquinas en acento que crecen al pasar el mouse.
+  -------------------------------- */
+
+  .tarjeta {
+    position: relative;
+    padding: 64px;
+    background: #fbf8f3;
+    border: 1px solid var(--linea);
+    box-shadow:
+      0 1px 2px rgba(39, 35, 31, 0.04),
+      0 28px 56px -28px rgba(39, 35, 31, 0.22);
+    transition:
+      opacity 0.9s var(--ease-suave),
+      transform 0.9s var(--ease-suave),
+      box-shadow 0.6s ease;
+  }
+
+  /* Filete interior: da el aire de una página impresa */
+  .tarjeta > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .tarjeta-filete,
+  .tarjeta {
+    background-image:
+      linear-gradient(var(--filete), var(--filete)),
+      linear-gradient(var(--filete), var(--filete)),
+      linear-gradient(var(--filete), var(--filete)),
+      linear-gradient(var(--filete), var(--filete));
+    background-size: calc(100% - 24px) 1px, calc(100% - 24px) 1px, 1px calc(100% - 24px), 1px calc(100% - 24px);
+    background-position: center 12px, center calc(100% - 12px), 12px center, calc(100% - 12px) center;
+    background-repeat: no-repeat;
+  }
+
+  .tarjeta:hover {
+    box-shadow:
+      0 1px 2px rgba(39, 35, 31, 0.05),
+      0 36px 64px -28px rgba(39, 35, 31, 0.3);
+  }
+
+  .tarjeta::before,
+  .tarjeta::after {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border: 0 solid var(--color-accent);
+    pointer-events: none;
+    transition: width 0.6s var(--ease-suave), height 0.6s var(--ease-suave);
+  }
+
+  .tarjeta::before {
+    top: -1px;
+    left: -1px;
+    border-width: 2px 0 0 2px;
+  }
+
+  .tarjeta::after {
+    right: -1px;
+    bottom: -1px;
+    border-width: 0 2px 2px 0;
+  }
+
+  .tarjeta:hover::before,
+  .tarjeta:hover::after {
+    width: 52px;
+    height: 52px;
+  }
+
+  .bloque .tarjeta {
+    max-width: 1200px;
   }
 
 
@@ -270,16 +434,16 @@ o en los amores febriles que arrebatan la vida.
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 48px;
-    padding: 0 26px;
+    min-height: 50px;
+    padding: 0 28px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
     transition:
-      background-color 0.25s ease,
-      color 0.25s ease,
-      border-color 0.25s ease,
-      transform 0.25s ease;
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease,
+      transform 0.3s var(--ease-suave);
   }
 
   .boton:hover {
@@ -300,11 +464,23 @@ o en los amores febriles que arrebatan la vida.
   .boton-secundario {
     background: transparent;
     color: var(--color-text);
-    border: 1px solid var(--color-text);
+    border: 1px solid rgba(39, 35, 31, 0.55);
   }
 
   .boton-secundario:hover {
     background: var(--color-text);
+    border-color: var(--color-text);
+    color: #fff;
+  }
+
+  .boton-claro {
+    background: #fff;
+    color: var(--color-button);
+    border: 1px solid #fff;
+  }
+
+  .boton-claro:hover {
+    background: transparent;
     color: #fff;
   }
 
@@ -315,7 +491,7 @@ o en los amores febriles que arrebatan la vida.
 
   .hero {
     position: relative;
-    min-height: 620px;
+    min-height: 640px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -328,6 +504,13 @@ o en los amores febriles que arrebatan la vida.
     background-size: cover;
     background-position: center;
     z-index: 0;
+    transform-origin: 70% 50%;
+    animation: hero-zoom 2.6s var(--ease-suave) both;
+  }
+
+  @keyframes hero-zoom {
+    from { transform: scale(1.07); }
+    to   { transform: scale(1); }
   }
 
   .hero-overlay {
@@ -335,12 +518,25 @@ o en los amores febriles que arrebatan la vida.
     inset: 0;
     background: linear-gradient(
       90deg,
-      rgba(246, 242, 236, 0.96) 0%,
-      rgba(246, 242, 236, 0.88) 28%,
-      rgba(246, 242, 236, 0.35) 52%,
-      rgba(246, 242, 236, 0) 75%
+      rgba(246, 242, 236, 0.97) 0%,
+      rgba(246, 242, 236, 0.9) 28%,
+      rgba(246, 242, 236, 0.38) 54%,
+      rgba(246, 242, 236, 0) 76%
     );
     z-index: 1;
+  }
+
+  /* Desvanecido inferior: el hero se funde con la página */
+  .hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 110px;
+    background: linear-gradient(180deg, rgba(246, 242, 236, 0), var(--color-background));
+    z-index: 1;
+    pointer-events: none;
   }
 
   .hero-container {
@@ -351,29 +547,40 @@ o en los amores febriles que arrebatan la vida.
   }
 
   .hero-content {
-    width: min(100%, 520px);
+    width: min(100%, 540px);
   }
 
   .hero-eyebrow {
-    margin: 0 0 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 26px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.16em;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--color-accent);
   }
 
+  .hero-eyebrow .linea {
+    width: 38px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
   .hero-content h1 {
     margin: 0;
-    font-size: clamp(2.6rem, 4vw, 4.2rem);
+    font-size: clamp(2.7rem, 4.2vw, 4.4rem);
     font-weight: 400;
-    line-height: 1.08;
-    letter-spacing: -0.02em;
+    line-height: 1.06;
+    letter-spacing: -0.025em;
   }
 
   .hero-subtitle {
-    margin: 22px 0 30px;
-    font-size: 1.15rem;
+    margin: 26px 0 34px;
+    font-size: 1.1rem;
+    font-style: italic;
+    letter-spacing: 0.02em;
     color: var(--color-text-light);
   }
 
@@ -383,29 +590,23 @@ o en los amores febriles que arrebatan la vida.
     gap: 14px;
   }
 
-  /* Entrada escalonada del hero */
+  /* Entrada escalonada */
   .hero-eyebrow,
   .hero-content h1,
   .hero-subtitle,
   .hero-botones {
     opacity: 0;
-    animation: hero-entrada 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: hero-entrada 1s var(--ease-suave) forwards;
   }
 
-  .hero-eyebrow { animation-delay: 0.05s; }
-  .hero-content h1 { animation-delay: 0.15s; }
-  .hero-subtitle { animation-delay: 0.3s; }
-  .hero-botones { animation-delay: 0.45s; }
+  .hero-eyebrow   { animation-delay: 0.1s; }
+  .hero-content h1 { animation-delay: 0.22s; }
+  .hero-subtitle  { animation-delay: 0.38s; }
+  .hero-botones   { animation-delay: 0.52s; }
 
   @keyframes hero-entrada {
-    from {
-      opacity: 0;
-      transform: translateY(14px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
 
@@ -414,16 +615,37 @@ o en los amores febriles que arrebatan la vida.
   -------------------------------- */
 
   .frase {
-    padding: 90px 0;
+    padding: 120px 0 100px;
     text-align: center;
   }
 
+  .frase .contenedor::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 56px;
+    margin: 56px auto 0;
+    background: linear-gradient(180deg, var(--color-accent), rgba(138, 117, 97, 0));
+  }
+
+  .comilla {
+    display: block;
+    height: 0.55em;
+    margin-bottom: 14px;
+    font-size: 5.5rem;
+    line-height: 1;
+    color: var(--color-accent);
+    opacity: 0.55;
+  }
+
   .frase-texto {
-    max-width: 820px;
+    max-width: 840px;
     margin: 0 auto;
-    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    font-size: clamp(1.45rem, 2.7vw, 2.15rem);
     font-style: italic;
     line-height: 1.5;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
     color: var(--color-text);
   }
 
@@ -433,51 +655,86 @@ o en los amores febriles que arrebatan la vida.
   -------------------------------- */
 
   .bloque {
-    padding: 90px 0;
+    padding: 100px 0;
   }
 
-  .bloque-oscuro {
+  .bloque-tono {
     background: #ece5db;
+    border-top: 1px solid var(--linea);
+    border-bottom: 1px solid var(--linea);
   }
 
   .bloque-grid {
     display: grid;
-    grid-template-columns: 420px 1fr;
-    gap: 80px;
+    grid-template-columns: 440px 1fr;
+    gap: 96px;
     align-items: center;
   }
 
   .bloque-grid-inverso {
-    grid-template-columns: 1fr 340px;
+    grid-template-columns: 1fr 440px;
   }
 
-  .bloque-imagen img {
+  .bloque-texto {
+    max-width: 540px;
+  }
+
+  .bloque-texto p:not(.etiqueta) {
+    margin: 0 0 30px;
+    font-size: 1.04rem;
+    line-height: 1.8;
+    color: var(--color-text-light);
+  }
+
+  /* Retrato con marco desplazado */
+  .marco {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .marco::before {
+    content: "";
+    position: absolute;
+    inset: 20px -20px -20px 20px;
+    border: 1px solid var(--color-accent);
+    z-index: -1;
+  }
+
+  .marco img {
     display: block;
     width: 100%;
-    height: 480px;
+    height: 520px;
     object-fit: cover;
     object-position: top center;
   }
 
-  .bloque-imagen.portada img {
+  /* Portada del libro sobre panel */
+  .portada-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 56px 40px;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 60%),
+      #e1d7c8;
+    transition: background-color 0.4s ease;
+  }
+
+  .portada-panel img {
+    display: block;
+    width: min(100%, 270px);
     height: auto;
-    object-fit: contain;
-    box-shadow: 0 18px 40px rgba(39, 35, 31, 0.22);
+    box-shadow:
+      0 2px 4px rgba(39, 35, 31, 0.18),
+      0 22px 44px rgba(39, 35, 31, 0.28);
+    transition: transform 0.6s var(--ease-suave), box-shadow 0.6s var(--ease-suave);
   }
 
-  .bloque-texto {
-    max-width: 560px;
-  }
-
-  .bloque-texto p {
-    margin: 0 0 26px;
-    line-height: 1.75;
-    color: var(--color-text-light);
-  }
-
-  .bloque-texto .etiqueta {
-    margin-bottom: 12px;
-    color: var(--color-accent);
+  .portada-panel:hover img {
+    transform: translateY(-6px) rotate(-1deg);
+    box-shadow:
+      0 4px 8px rgba(39, 35, 31, 0.2),
+      0 32px 56px rgba(39, 35, 31, 0.32);
   }
 
 
@@ -486,28 +743,67 @@ o en los amores febriles que arrebatan la vida.
   -------------------------------- */
 
   .poesia {
-    padding: 100px 0;
-    text-align: center;
+    padding: 120px 0;
   }
 
-  
-.poesia-verso {
-  max-width: 560px;
-  margin: 0 auto 20px;
-  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
-  line-height: 1.6;
-  letter-spacing: 0;
-  text-wrap: pretty;
-}
+  .poesia-caja {
+    max-width: 900px;
+    text-align: center;
+    padding: 76px 70px 70px;
+  }
 
+  /* Separador ornamental: línea con rombo */
+  .ornamento {
+    position: relative;
+    display: block;
+    width: 72px;
+    height: 1px;
+    margin: 6px auto 38px;
+    background: var(--color-accent);
+    opacity: 0.7;
+  }
+
+  .ornamento::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 7px;
+    height: 7px;
+    background: #fbf8f3;
+    border: 1px solid var(--color-accent);
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .poesia-bloque {
+    margin: 0 auto 38px;
+  }
+
+  .poesia-verso {
+    margin: 0;
+    font-size: clamp(1.4rem, 2.7vw, 2.05rem);
+    font-style: italic;
+    line-height: 1.55;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+
+  .poesia-autor {
+    margin-top: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
 
 
   /* --------------------------------
-     GALERÍA (VISTA PREVIA)
+     GALERÍA (MOSAICO)
   -------------------------------- */
 
   .galeria-preview {
-    padding: 0 0 100px;
+    padding: 0 0 120px;
   }
 
   .seccion-cabecera {
@@ -515,73 +811,137 @@ o en los amores febriles que arrebatan la vida.
     align-items: flex-end;
     justify-content: space-between;
     gap: 24px;
-    margin-bottom: 36px;
+    margin-bottom: 44px;
   }
 
   .seccion-cabecera h2 {
     margin: 0;
   }
 
-  .galeria-tiras {
+  .galeria-mosaico {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+    grid-template-columns: 1.35fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    height: 620px;
   }
 
-  .galeria-tira {
+  /* Cada foto va enmarcada como una impresión: borde de papel + sombra */
+  .tesela {
+    position: relative;
     display: block;
-    aspect-ratio: 4 / 5;
     overflow: hidden;
     background: #e8e1d7;
+    border: 10px solid #fbf8f3;
+    box-shadow:
+      0 0 0 1px var(--linea),
+      0 24px 44px -26px rgba(39, 35, 31, 0.4);
+    transition: box-shadow 0.5s ease;
   }
 
-  .galeria-tira img {
+  .tesela:hover {
+    box-shadow:
+      0 0 0 1px var(--color-accent),
+      0 30px 52px -26px rgba(39, 35, 31, 0.5);
+  }
+
+  .tesela-1 {
+    grid-row: 1 / span 2;
+  }
+
+  /* Número de la foto */
+  .tesela::before {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    padding: 5px 9px;
+    background: rgba(251, 248, 243, 0.92);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    color: var(--color-text);
+  }
+
+  .tesela-1::before { content: "01"; }
+  .tesela-2::before { content: "02"; }
+  .tesela-3::before { content: "03"; }
+
+  .tesela img {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.9s var(--ease-suave);
   }
 
-  .galeria-tira:hover img {
+  .tesela::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(39, 35, 31, 0) 55%, rgba(39, 35, 31, 0.28) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .tesela:hover img {
     transform: scale(1.05);
+  }
+
+  .tesela:hover::after {
+    opacity: 1;
   }
 
 
   /* --------------------------------
-     LLAMADO A CONTACTO
+     CONTACTO
   -------------------------------- */
 
   .cta {
-    padding: 90px 0;
+    padding: 100px 0;
     background: var(--color-button);
     color: #fff;
     text-align: center;
   }
 
   .cta-contenido {
-    max-width: 640px;
+    --filete: rgba(255, 255, 255, 0.16);
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 64px 40px;
+    background-color: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+  }
+
+  .cta-contenido:hover {
+    box-shadow: none;
+  }
+
+  .cta-contenido::before,
+  .cta-contenido::after {
+    border-color: rgba(255, 255, 255, 0.75);
+  }
+
+  .etiqueta-clara,
+  .etiqueta-clara .num {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .etiqueta-clara::before,
+  .etiqueta-clara::after {
+    background: rgba(255, 255, 255, 0.45);
   }
 
   .cta h2 {
     color: #fff;
   }
 
-  .cta p {
-    margin: 0 0 30px;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.75);
-  }
-
-  .cta .boton-primario {
-    background: #fff;
-    color: var(--color-button);
-    border-color: #fff;
-  }
-
-  .cta .boton-primario:hover {
-    background: var(--color-background);
-    border-color: var(--color-background);
+  .cta p:not(.etiqueta) {
+    max-width: 480px;
+    margin: 0 auto 34px;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.74);
   }
 
 
@@ -589,23 +949,39 @@ o en los amores febriles que arrebatan la vida.
      TABLET
   -------------------------------- */
 
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
 
     .hero-content {
-      width: min(100%, 420px);
+      width: min(100%, 440px);
+    }
+
+    .tarjeta {
+      padding: 44px;
+    }
+
+    .poesia-caja {
+      padding: 60px 44px;
     }
 
     .bloque-grid {
-      grid-template-columns: 320px 1fr;
-      gap: 44px;
+      grid-template-columns: 300px 1fr;
+      gap: 48px;
     }
 
     .bloque-grid-inverso {
-      grid-template-columns: 1fr 280px;
+      grid-template-columns: 1fr 300px;
     }
 
-    .bloque-imagen img {
-      height: 420px;
+    .marco img {
+      height: 440px;
+    }
+
+    .portada-panel {
+      padding: 44px 28px;
+    }
+
+    .galeria-mosaico {
+      height: 520px;
     }
 
   }
@@ -618,7 +994,7 @@ o en los amores febriles que arrebatan la vida.
   @media (max-width: 700px) {
 
     .hero {
-      min-height: 680px;
+      min-height: 700px;
       align-items: flex-end;
     }
 
@@ -630,14 +1006,14 @@ o en los amores febriles que arrebatan la vida.
       background: linear-gradient(
         180deg,
         rgba(246, 242, 236, 0.05) 0%,
-        rgba(246, 242, 236, 0.25) 45%,
-        rgba(246, 242, 236, 0.95) 78%,
+        rgba(246, 242, 236, 0.25) 42%,
+        rgba(246, 242, 236, 0.95) 76%,
         rgba(246, 242, 236, 1) 100%
       );
     }
 
     .hero-container {
-      padding-bottom: 55px;
+      padding-bottom: 56px;
     }
 
     .hero-content {
@@ -649,52 +1025,97 @@ o en los amores febriles que arrebatan la vida.
       font-size: clamp(2.4rem, 10vw, 3.5rem);
     }
 
-    .frase,
+    .frase {
+      padding: 76px 0 64px;
+    }
+
+    .frase .contenedor::after {
+      height: 40px;
+      margin-top: 40px;
+    }
+
+    .comilla {
+      font-size: 4.2rem;
+    }
+
     .bloque,
-    .poesia,
     .cta {
-      padding: 64px 0;
+      padding: 68px 0;
+    }
+
+    .tarjeta {
+      padding: 32px 22px;
+    }
+
+    .poesia {
+      padding: 72px 0;
+    }
+
+    .poesia-caja {
+      padding: 48px 22px;
+    }
+
+    .tesela {
+      border-width: 6px;
     }
 
     .galeria-preview {
-      padding-bottom: 64px;
+      padding-bottom: 72px;
     }
 
     .bloque-grid,
     .bloque-grid-inverso {
       grid-template-columns: 1fr;
-      gap: 36px;
+      gap: 48px;
     }
 
-    /* En móvil la portada del libro va primero */
-    .bloque-grid-inverso .portada {
-      order: -1;
-      max-width: 240px;
-      margin: 0 auto;
+    .marco {
+      max-width: 400px;
     }
 
-    .bloque-imagen img {
+    .marco::before {
+      inset: 14px -12px -14px 14px;
+    }
+
+    .marco img {
       height: auto;
-      max-height: 460px;
+      max-height: 480px;
     }
 
     .bloque-texto {
       max-width: 100%;
     }
 
+    /* En móvil la portada del libro va primero */
+    .bloque-grid-inverso .portada-panel {
+      order: -1;
+    }
+
+    .portada-panel img {
+      width: min(100%, 220px);
+    }
+
     .seccion-cabecera {
       flex-direction: column;
       align-items: flex-start;
-      gap: 16px;
+      gap: 18px;
+      margin-bottom: 30px;
     }
 
-    .galeria-tiras {
+    .galeria-mosaico {
       grid-template-columns: 1fr 1fr;
+      grid-template-rows: 260px 190px;
+      height: auto;
       gap: 10px;
     }
 
-    .galeria-tira:last-child {
-      display: none;
+    .tesela-1 {
+      grid-column: 1 / -1;
+      grid-row: 1;
+    }
+
+    .cta-contenido {
+      padding: 48px 22px;
     }
 
   }
@@ -705,6 +1126,10 @@ o en los amores febriles que arrebatan la vida.
   -------------------------------- */
 
   @media (prefers-reduced-motion: reduce) {
+
+    .hero-image {
+      animation: none;
+    }
 
     .hero-eyebrow,
     .hero-content h1,
