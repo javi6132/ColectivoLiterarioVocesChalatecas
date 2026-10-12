@@ -1,0 +1,237 @@
+---
+import Layout from "./Layout/Layout.astro";
+
+
+const libro = {
+  titulo: "Fronteras Prohibidas",
+  subtitulo: "Antología Poética",
+  portada: "/imagenes/libro.jpg",
+  sinopsis: [
+    "Fronteras Prohibidas es una interesante colección de poemas con un toque literario exquisito y de gran calidad que pretende sumergir al lector en una variedad de temáticas que invitan no sólo a disfrutar cada poema si no también, a poder reflexionar en torno a ellos.",
+  ],
+  detalles: [
+    { etiqueta: "Autor", valor: "Juan Gerardo Alfaro" },
+    { etiqueta: "Género", valor: "Poesía" },
+    { etiqueta: "Fecha de publicación", valor: "28 de febrero de 2023" },
+    { etiqueta: "Páginas", valor: "70" },
+    { etiqueta: "Editorial", valor: "Juan Gerardo Alfaro Escobar (Autoedición)" },
+  ],
+ 
+ 
+  cita: "Yo tampoco sé porque escribo poesía, ni sé porque desangran, mis huellas dactilares en la noche."
+
+};
+---
+
+<Layout title="Libro | Voces Chalatecas">
+  <section class="libro" id="libro">
+    <div class="libro-container">
+
+      <h1>Libro</h1>
+
+      <div class="libro-grid">
+
+        <!-- PORTADA -->
+        <div class="portada">
+          <img
+            src=imagenes/poesia/FronterasProhibidas.jpg
+            alt={`Portada del libro ${libro.titulo}`}
+          />
+        </div>
+
+        <!-- INFORMACIÓN -->
+        <div class="libro-info">
+          <p class="libro-subtitulo">{libro.subtitulo}</p>
+          <h2 class="libro-titulo">{libro.titulo}</h2>
+
+          <div class="sinopsis">
+            {libro.sinopsis.map((parrafo) => <p>{parrafo}</p>)}
+          </div>
+
+          <ul class="detalles">
+            {libro.detalles.map((d) => (
+              <li>
+                <span class="detalle-etiqueta">{d.etiqueta}</span>
+                <span class="detalle-valor">{d.valor}</span>
+              </li>
+            ))}
+          </ul>
+
+      
+        </div>
+
+      </div>
+
+      <!-- CITA DEL LIBRO -->
+      <blockquote class="cita">
+        “{libro.cita}”
+      </blockquote>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .libro {
+    padding: 30px 0 80px;
+  }
+
+  .libro-container {
+    width: min(90%, 1100px);
+    margin: 0 auto;
+  }
+
+  h1 {
+    margin: 0 0 30px;
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  /* GRID PRINCIPAL */
+  .libro-grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 70px;
+    align-items: start;
+    margin-bottom: 60px;
+  }
+
+  /* PORTADA */
+  .portada {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .portada img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 18px 40px rgba(39, 35, 31, 0.22);
+  }
+
+  /* INFORMACIÓN */
+  .libro-info {
+    max-width: 620px;
+  }
+
+  .libro-subtitulo {
+    margin: 0 0 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .libro-titulo {
+    margin: 0 0 24px;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .sinopsis p {
+    margin: 0 0 16px;
+    line-height: 1.75;
+    color: var(--color-text-light);
+  }
+
+  /* DETALLES */
+  .detalles {
+    list-style: none;
+    margin: 28px 0 32px;
+    padding: 0;
+    border-top: 1px solid #e5e0d8;
+  }
+
+  .detalles li {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e0d8;
+    font-size: 0.95rem;
+  }
+
+  .detalle-etiqueta {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-light);
+    align-self: center;
+  }
+
+  .detalle-valor {
+    color: var(--color-text);
+  }
+
+  /* BOTÓN */
+  .boton-libro {
+    display: inline-block;
+    padding: 14px 28px;
+    background: var(--color-button);
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background-color 0.25s ease;
+  }
+
+  .boton-libro:hover {
+    background: var(--color-button-hover);
+  }
+
+  /* CITA */
+  .cita {
+    margin: 0;
+    padding: 28px 0 28px 30px;
+    border-left: 3px solid var(--color-accent);
+    max-width: 800px;
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+
+  /* TABLET */
+  @media (max-width: 900px) {
+    .libro-grid {
+      grid-template-columns: 300px 1fr;
+      gap: 40px;
+    }
+  }
+
+  /* MÓVIL */
+  @media (max-width: 800px) {
+    .libro {
+      padding: 20px 0 60px;
+    }
+
+    .libro-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      margin-bottom: 40px;
+    }
+
+    .portada {
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    .libro-info {
+      max-width: 100%;
+    }
+
+    .detalles li {
+      grid-template-columns: 90px 1fr;
+    }
+
+    .cita {
+      font-size: 1.1rem;
+      padding: 20px 0 20px 20px;
+    }
+  }
+</style>
