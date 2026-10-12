@@ -24,33 +24,30 @@ import Layout from "./Layout/Layout.astro";
                     <div class="contenido-modal">
                         <span class="cerrar">&times;</span>
                         <h3>Fronteras prohibidas</h3>
-                        <!--<h2>Fronteras prohibidas</h2> -->
-                        <p>
-                            a aaaaaaaaaaaaaaaaaaaaa aaa aaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaazc
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+                        <p class="texto-poema">
+                            El camino se hace al andar,<br />
+                            con pasos de calma y de viento,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br
+                            />
+                            sembrando la luz al mirar<br />
+                            más allá del propio intento.<br />
+
+                            Gira el mundo, pasa la hora,<br />
+                            la tarde se viste de calma,<br />
+                            y canta la vida que ahora<br />
+                            despierta y abraza el alma. con pasos de calma y de viento,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br
+                            />
+                            sembrando la luz al mirar<br />
+                            más allá del propio intento.<br />
+
+                            Gira el mundo, pasa la hora,<br />
+                            la tarde se viste de calma,<br />
+                            y canta la vida que ahora<br />
+                            despierta y abraza el alma. Gira el mundo, pasa la hora,<br
+                            />
+                            la tarde se viste de calma,<br />
+                            y canta la vida que ahora<br />
+                            despierta y abraza el alma.
                         </p>
                         <h2>~Juan Gerardo Alfaro Escobar</h2>
                     </div>
@@ -214,6 +211,7 @@ import Layout from "./Layout/Layout.astro";
     }
 
     .libro h3 {
+        text-align: center;
     }
 
     /*Solo es un espaciador */
@@ -256,27 +254,48 @@ import Layout from "./Layout/Layout.astro";
         }
     }
 
-    /* El fondo oscuro que cubre toda la pantalla */
+    /* Fondo oscuro de la ventana modal */
     .modal {
-        display: none; /* Oculto por defecto */
+        display: none;
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.6); /* Fondo negro translúcido */
-        z-index: 9999; /* Número alto para que tape todo el contenido */
+
+        /* Permite desplazarse si es necesario */
+        overflow-y: auto;
+
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 9999;
+
+        /* Centra la ventana */
         justify-content: center;
         align-items: center;
+
+        /* Espacio para que la ventana no toque los bordes */
+        padding: 20px;
+        box-sizing: border-box;
     }
 
-    /* La caja blanca con el texto del libro */
+    /* Caja blanca donde aparece el poema */
     .contenido-modal {
         background-color: #ffffff;
         padding: 30px;
         border-radius: 10px;
-        width: 90%;
-        max-width: 450px;
+
+        width: 80%;
+        max-width: 600px;
+
+        /* Altura máxima de la ventana */
+        max-height: 75vh;
+
+        /* Scroll vertical cuando el contenido sea largo */
+        overflow-y: auto;
+
+        /* Mantiene el tamaño dentro de la pantalla */
+        box-sizing: border-box;
+
         position: relative;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         color: #333;
@@ -296,6 +315,17 @@ import Layout from "./Layout/Layout.astro";
 
     .cerrar:hover {
         color: #000;
+    }
+
+    /* Formato exclusivo para los poemas de las ventanas */
+    .contenido-modal .texto-poema {
+        text-align: center;
+        font-size: 16px;
+        line-height: 1.8;
+        color: #716d65;
+        margin: 15px 0 20px;
+        white-space: normal;
+        overflow-wrap: anywhere;
     }
 </style>
 
