@@ -20,38 +20,58 @@ import Layout from "./Layout/Layout.astro";
                 <!-- data-target para decirle qué ventana abrir -->
                 <button class="btn-abrir" data-target="modalLibro1">Ver</button>
 
-                <div id="modalLibro1" class="modal">
-                    <div class="contenido-modal">
-                        <span class="cerrar">&times;</span>
-                        <h3>Fronteras prohibidas</h3>
 
-                        <p class="texto-poema">
-                            El camino se hace al andar,<br />
-                            con pasos de calma y de viento,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br
-                            />
-                            sembrando la luz al mirar<br />
-                            más allá del propio intento.<br />
+<div id="modalLibro1" class="modal">
+    <div class="contenido-modal">
 
-                            Gira el mundo, pasa la hora,<br />
-                            la tarde se viste de calma,<br />
-                            y canta la vida que ahora<br />
-                            despierta y abraza el alma. con pasos de calma y de viento,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br
-                            />
-                            sembrando la luz al mirar<br />
-                            más allá del propio intento.<br />
+        <div class="cabecera-modal">
+            <span class="cerrar">&times;</span>
+        </div>
 
-                            Gira el mundo, pasa la hora,<br />
-                            la tarde se viste de calma,<br />
-                            y canta la vida que ahora<br />
-                            despierta y abraza el alma. Gira el mundo, pasa la hora,<br
-                            />
-                            la tarde se viste de calma,<br />
-                            y canta la vida que ahora<br />
-                            despierta y abraza el alma.
-                        </p>
-                        <h2>~Juan Gerardo Alfaro Escobar</h2>
-                    </div>
-                </div>
+        <div class="cuerpo-modal">
+            <h3>Fronteras prohibidas</h3>
+
+            <p class="texto-poema">
+                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.
+                                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.
+                                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.
+                                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.
+
+                                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, inclFuidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
+                de tu poema, incluidos los saltos de línea.
+            </p>
+
+            <h2>~Juan Gerardo Alfaro Escobar</h2>
+        </div>
+
+    </div>
+</div>
+
             </article>
 
             <!-- LIBRO 2 -->
@@ -63,15 +83,24 @@ import Layout from "./Layout/Layout.astro";
                 <h2>ALGÚN DÍA, HOY</h2>
                 <p>BECERRA, ÁNGELA</p>
 
-                <button class="btn-abrir" data-target="modalLibro2">Ver</button>
 
-                <div id="modalLibro2" class="modal">
-                    <div class="contenido-modal">
-                        <span class="cerrar">&times;</span>
-                        <h3>Sin titulo</h3>
-                        <p>Sin poema</p>
-                    </div>
-                </div>
+<button class="btn-abrir" data-target="modalLibro2">Ver</button>
+
+<div id="modalLibro2" class="modal">
+    <div class="contenido-modal">
+
+        <div class="cabecera-modal">
+            <span class="cerrar">&times;</span>
+        </div>
+
+        <div class="cuerpo-modal">
+            <h3>Sin título</h3>
+            <p class="texto-poema">Sin poema</p>
+        </div>
+
+    </div>
+</div>
+
             </article>
 
             <!-- LIBRO 3 -->
@@ -254,79 +283,84 @@ import Layout from "./Layout/Layout.astro";
         }
     }
 
-    /* Fondo oscuro de la ventana modal */
-    .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
 
-        /* Permite desplazarse si es necesario */
-        overflow-y: auto;
+/* Fondo oscuro de la ventana */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
 
-        background-color: rgba(0, 0, 0, 0.6);
-        z-index: 9999;
+/* Caja principal */
+.contenido-modal {
+    background-color: #ffffff;
+    width: 80%;
+    max-width: 600px;
+    max-height: 75vh;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    color: #333;
 
-        /* Centra la ventana */
-        justify-content: center;
-        align-items: center;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
 
-        /* Espacio para que la ventana no toque los bordes */
-        padding: 20px;
-        box-sizing: border-box;
-    }
+/* Cabecera fija con la X */
+.cabecera-modal {
+    position: relative;
+    flex-shrink: 0;
+    height: 50px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eee;
+}
 
-    /* Caja blanca donde aparece el poema */
-    .contenido-modal {
-        background-color: #ffffff;
-        padding: 30px;
-        border-radius: 10px;
+/* Botón para cerrar */
+.cerrar {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #aaa;
+    line-height: 35px;
+}
 
-        width: 80%;
-        max-width: 600px;
+.cerrar:hover {
+    color: #000;
+}
 
-        /* Altura máxima de la ventana */
-        max-height: 75vh;
+/* Solo esta parte tendrá scroll */
+.cuerpo-modal {
+    padding: 20px 30px 30px;
+    overflow-y: auto;
+    min-height: 0;
+    overflow-wrap: anywhere;
+    text-align: left;
+}
 
-        /* Scroll vertical cuando el contenido sea largo */
-        overflow-y: auto;
+/* Texto del poema */
+.cuerpo-modal .texto-poema {
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #716d65;
+    margin: 15px 0 20px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
 
-        /* Mantiene el tamaño dentro de la pantalla */
-        box-sizing: border-box;
-
-        position: relative;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        color: #333;
-        text-align: left;
-    }
-
-    /* El botón para cerrar */
-    .cerrar {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-        color: #aaa;
-    }
-
-    .cerrar:hover {
-        color: #000;
-    }
-
-    /* Formato exclusivo para los poemas de las ventanas */
-    .contenido-modal .texto-poema {
-        text-align: center;
-        font-size: 16px;
-        line-height: 1.8;
-        color: #716d65;
-        margin: 15px 0 20px;
-        white-space: normal;
-        overflow-wrap: anywhere;
-    }
 </style>
 
 <script>
