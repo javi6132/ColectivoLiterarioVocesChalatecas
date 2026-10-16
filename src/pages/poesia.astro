@@ -20,58 +20,102 @@ import Layout from "./Layout/Layout.astro";
                 <!-- data-target para decirle qué ventana abrir -->
                 <button class="btn-abrir" data-target="modalLibro1">Ver</button>
 
+                <div id="modalLibro1" class="modal">
+                    <div class="contenido-modal">
+                        <div class="cabecera-modal">
+                            <div class="controles-lectura">
+                                <button type="button" class="alternar-tema">
+                                    ☾ Modo oscuro
+                                </button>
 
-<div id="modalLibro1" class="modal">
-    <div class="contenido-modal">
+                                <button
+                                    type="button"
+                                    class="disminuir-letra"
+                                    aria-label="Reducir tamaño de letra"
+                                >
+                                    A−
+                                </button>
 
-        <div class="cabecera-modal">
-            <span class="cerrar">&times;</span>
-        </div>
+                                <button
+                                    type="button"
+                                    class="aumentar-letra"
+                                    aria-label="Aumentar tamaño de letra"
+                                >
+                                    A+
+                                </button>
+                            </div>
 
-        <div class="cuerpo-modal">
-            <h3>Fronteras prohibidas</h3>
+                            <button
+                                type="button"
+                                class="cerrar"
+                                aria-label="Cerrar ventana"
+                            >
+                                &times;
+                            </button>
+                        </div>
 
-            <p class="texto-poema">
-                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.
-                                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.
-                                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.
-                                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.
+                        <div class="cuerpo-modal">
+                            <h3>Fronteras prohibidas</h3>
 
-                                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, inclFuidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.                Aquí debes conservar todo el texto original
-                de tu poema, incluidos los saltos de línea.
-            </p>
+                            <p class="texto-poema">
+                                Aquí debes conservar todo el texto original de
+                                tu poema, incluidos los saltos de línea. Aquí
+                                debes conservar todo el texto original de tu
+                                poema, incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                inclFuidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea.
+                            </p>
 
-            <h2>~Juan Gerardo Alfaro Escobar</h2>
-        </div>
-
-    </div>
-</div>
-
+                            <h2>~Juan Gerardo Alfaro Escobar</h2>
+                        </div>
+                    </div>
+                </div>
             </article>
 
             <!-- LIBRO 2 -->
@@ -83,42 +127,211 @@ import Layout from "./Layout/Layout.astro";
                 <h2>ALGÚN DÍA, HOY</h2>
                 <p>BECERRA, ÁNGELA</p>
 
+                <button class="btn-abrir" data-target="modalLibro2">Ver</button>
 
-<button class="btn-abrir" data-target="modalLibro2">Ver</button>
+                <div id="modalLibro2" class="modal">
+                    <div class="contenido-modal">
+                        <div class="cabecera-modal">
+                            <div class="controles-lectura">
+                                <button type="button" class="alternar-tema">
+                                    ☾ Modo oscuro
+                                </button>
 
-<div id="modalLibro2" class="modal">
-    <div class="contenido-modal">
+                                <button
+                                    type="button"
+                                    class="disminuir-letra"
+                                    aria-label="Reducir tamaño de letra"
+                                >
+                                    A−
+                                </button>
 
-        <div class="cabecera-modal">
-            <span class="cerrar">&times;</span>
-        </div>
+                                <button
+                                    type="button"
+                                    class="aumentar-letra"
+                                    aria-label="Aumentar tamaño de letra"
+                                >
+                                    A+
+                                </button>
+                            </div>
 
-        <div class="cuerpo-modal">
-            <h3>Sin título</h3>
-            <p class="texto-poema">Sin poema</p>
-        </div>
+                            <button
+                                type="button"
+                                class="cerrar"
+                                aria-label="Cerrar ventana"
+                            >
+                                &times;
+                            </button>
+                        </div>
 
-    </div>
-</div>
+                        <div class="cuerpo-modal">
+                            <h3>Fronteras prohibidas</h3>
 
+                            <p class="texto-poema">
+                                Aquí debes conservar todo el texto original de
+                                tu poema, incluidos los saltos de línea. Aquí
+                                debes conservar todo el texto original de tu
+                                poema, incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                inclFuidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea.
+                            </p>
+
+                            <h2>~Juan Gerardo Alfaro Escobar</h2>
+                        </div>
+                    </div>
+                </div>
             </article>
 
             <!-- LIBRO 3 -->
             <article class="libro">
                 <img
                     src="imagenes/poesia/sin-imagen.png"
-                    alt="Las Palabras Rotas"
+                    alt="Algún Día, Hoy"
                 />
-                <h2>LAS PALABRAS<br />ROTAS</h2>
-                <p>GARCÍA MONTERO,<br />LUIS</p>
+                <h2>ALGÚN DÍA, HOY</h2>
+                <p>BECERRA, ÁNGELA</p>
 
-                <button class="btn-abrir" data-target="modalLibro3">Ver</button>
+                <button class="btn-abrir" data-target="modalLibro2">Ver</button>
 
                 <div id="modalLibro3" class="modal">
                     <div class="contenido-modal">
-                        <span class="cerrar">&times;</span>
-                        <h3>Sin titulo</h3>
-                        <p>Sin poema</p>
+                        <div class="cabecera-modal">
+                            <div class="controles-lectura">
+                                <button type="button" class="alternar-tema">
+                                    ☾ Modo oscuro
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="disminuir-letra"
+                                    aria-label="Reducir tamaño de letra"
+                                >
+                                    A−
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="aumentar-letra"
+                                    aria-label="Aumentar tamaño de letra"
+                                >
+                                    A+
+                                </button>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="cerrar"
+                                aria-label="Cerrar ventana"
+                            >
+                                &times;
+                            </button>
+                        </div>
+
+                        <div class="cuerpo-modal">
+                            <h3>Fronteras prohibidas</h3>
+
+                            <p class="texto-poema">
+                                Aquí debes conservar todo el texto original de
+                                tu poema, incluidos los saltos de línea. Aquí
+                                debes conservar todo el texto original de tu
+                                poema, incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                inclFuidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea.
+                            </p>
+
+                            <h2>~Juan Gerardo Alfaro Escobar</h2>
+                        </div>
                     </div>
                 </div>
             </article>
@@ -127,18 +340,107 @@ import Layout from "./Layout/Layout.astro";
             <article class="libro">
                 <img
                     src="imagenes/poesia/sin-imagen.png"
-                    alt="Largo Pétalo de Mar"
+                    alt="Algún Día, Hoy"
                 />
-                <h2>LARGO PÉTALO DE<br />MAR</h2>
-                <p>ALLENDE, ISABEL</p>
+                <h2>ALGÚN DÍA, HOY</h2>
+                <p>BECERRA, ÁNGELA</p>
 
-                <button class="btn-abrir" data-target="modalLibro4">Ver</button>
+                <button class="btn-abrir" data-target="modalLibro2">Ver</button>
 
                 <div id="modalLibro4" class="modal">
                     <div class="contenido-modal">
-                        <span class="cerrar">&times;</span>
-                        <h3>Sin titulo</h3>
-                        <p>Sin poema</p>
+                        <div class="cabecera-modal">
+                            <div class="controles-lectura">
+                                <button type="button" class="alternar-tema">
+                                    ☾ Modo oscuro
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="disminuir-letra"
+                                    aria-label="Reducir tamaño de letra"
+                                >
+                                    A−
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="aumentar-letra"
+                                    aria-label="Aumentar tamaño de letra"
+                                >
+                                    A+
+                                </button>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="cerrar"
+                                aria-label="Cerrar ventana"
+                            >
+                                &times;
+                            </button>
+                        </div>
+
+                        <div class="cuerpo-modal">
+                            <h3>Fronteras prohibidas</h3>
+
+                            <p class="texto-poema">
+                                Aquí debes conservar todo el texto original de
+                                tu poema, incluidos los saltos de línea. Aquí
+                                debes conservar todo el texto original de tu
+                                poema, incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                inclFuidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea.
+                            </p>
+
+                            <h2>~Juan Gerardo Alfaro Escobar</h2>
+                        </div>
                     </div>
                 </div>
             </article>
@@ -147,18 +449,107 @@ import Layout from "./Layout/Layout.astro";
             <article class="libro">
                 <img
                     src="imagenes/poesia/sin-imagen.png"
-                    alt="Antes de los Años Terribles"
+                    alt="Algún Día, Hoy"
                 />
-                <h2>ANTES DE LOS<br />AÑOS TERRIBLES</h2>
-                <p>DEL ÁRBOL, VÍCTOR</p>
+                <h2>ALGÚN DÍA, HOY</h2>
+                <p>BECERRA, ÁNGELA</p>
 
-                <button class="btn-abrir" data-target="modalLibro5">Ver</button>
+                <button class="btn-abrir" data-target="modalLibro2">Ver</button>
 
                 <div id="modalLibro5" class="modal">
                     <div class="contenido-modal">
-                        <span class="cerrar">&times;</span>
-                        <h3>Sin titulo</h3>
-                        <p>Sin poema</p>
+                        <div class="cabecera-modal">
+                            <div class="controles-lectura">
+                                <button type="button" class="alternar-tema">
+                                    ☾ Modo oscuro
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="disminuir-letra"
+                                    aria-label="Reducir tamaño de letra"
+                                >
+                                    A−
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="aumentar-letra"
+                                    aria-label="Aumentar tamaño de letra"
+                                >
+                                    A+
+                                </button>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="cerrar"
+                                aria-label="Cerrar ventana"
+                            >
+                                &times;
+                            </button>
+                        </div>
+
+                        <div class="cuerpo-modal">
+                            <h3>Fronteras prohibidas</h3>
+
+                            <p class="texto-poema">
+                                Aquí debes conservar todo el texto original de
+                                tu poema, incluidos los saltos de línea. Aquí
+                                debes conservar todo el texto original de tu
+                                poema, incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                inclFuidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea.
+                            </p>
+
+                            <h2>~Juan Gerardo Alfaro Escobar</h2>
+                        </div>
                     </div>
                 </div>
             </article>
@@ -167,18 +558,107 @@ import Layout from "./Layout/Layout.astro";
             <article class="libro">
                 <img
                     src="imagenes/poesia/sin-imagen.png"
-                    alt="Mi Vida en Barco"
+                    alt="Algún Día, Hoy"
                 />
-                <h2>MI VIDA EN BARCO</h2>
-                <p>TSUGE, TADIO</p>
+                <h2>ALGÚN DÍA, HOY</h2>
+                <p>BECERRA, ÁNGELA</p>
 
-                <button class="btn-abrir" data-target="modalLibro6">Ver</button>
+                <button class="btn-abrir" data-target="modalLibro2">Ver</button>
 
-                <div id="modalLibro6" class="modal">
+                <div id="modalLibro5" class="modal">
                     <div class="contenido-modal">
-                        <span class="cerrar">&times;</span>
-                        <h3>Sin titulo</h3>
-                        <p>Sin poema</p>
+                        <div class="cabecera-modal">
+                            <div class="controles-lectura">
+                                <button type="button" class="alternar-tema">
+                                    ☾ Modo oscuro
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="disminuir-letra"
+                                    aria-label="Reducir tamaño de letra"
+                                >
+                                    A−
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="aumentar-letra"
+                                    aria-label="Aumentar tamaño de letra"
+                                >
+                                    A+
+                                </button>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="cerrar"
+                                aria-label="Cerrar ventana"
+                            >
+                                &times;
+                            </button>
+                        </div>
+
+                        <div class="cuerpo-modal">
+                            <h3>Fronteras prohibidas</h3>
+
+                            <p class="texto-poema">
+                                Aquí debes conservar todo el texto original de
+                                tu poema, incluidos los saltos de línea. Aquí
+                                debes conservar todo el texto original de tu
+                                poema, incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                inclFuidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea. Aquí debes
+                                conservar todo el texto original de tu poema,
+                                incluidos los saltos de línea.
+                            </p>
+
+                            <h2>~Juan Gerardo Alfaro Escobar</h2>
+                        </div>
                     </div>
                 </div>
             </article>
@@ -283,139 +763,300 @@ import Layout from "./Layout/Layout.astro";
         }
     }
 
-
-/* Fondo oscuro de la ventana */
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-/* Caja principal */
-.contenido-modal {
-    background-color: #ffffff;
-    width: 80%;
-    max-width: 600px;
-    max-height: 75vh;
-    border-radius: 10px;
-    box-sizing: border-box;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    color: #333;
-
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-/* Cabecera fija con la X */
-.cabecera-modal {
-    position: relative;
-    flex-shrink: 0;
-    height: 50px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #eee;
-}
-
-/* Botón para cerrar */
-.cerrar {
-    position: absolute;
-    top: 5px;
-    right: 15px;
-    font-size: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #aaa;
-    line-height: 35px;
-}
-
-.cerrar:hover {
-    color: #000;
-}
-
-/* Solo esta parte tendrá scroll */
-.cuerpo-modal {
-    padding: 20px 30px 30px;
-    overflow-y: auto;
-    min-height: 0;
-    overflow-wrap: anywhere;
-    text-align: left;
-}
-
-/* Texto del poema */
-.cuerpo-modal .texto-poema {
-    text-align: center;
-    font-size: 16px;
-    line-height: 1.8;
-    color: #716d65;
-    margin: 15px 0 20px;
-    white-space: normal;
-    overflow-wrap: anywhere;
-}
-
-<<<<<<< HEAD
-    .cerrar:hover {
-        color: #000;
+    /* Fondo de la ventana */
+    .modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
     }
 
-    /* Formato exclusivo para los poemas de las ventanas */
-    .contenido-modal .texto-poema {
+    .modal.abierto {
+        display: flex;
+    }
+
+    /* Caja principal */
+    .contenido-modal {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        max-width: 600px;
+        max-height: 75vh;
+        box-sizing: border-box;
+        overflow: hidden;
+        border-radius: 10px;
+        background-color: #ffffff;
+        color: #333333;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
+    }
+
+    /* Cabecera: botones y X en una sola línea */
+    .cabecera-modal {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        flex-shrink: 0;
+        min-height: 54px;
+        padding: 8px 12px;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        border-bottom: 1px solid #eeeeee;
+    }
+
+    /* Controles de lectura a la izquierda */
+    .controles-lectura {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        min-width: 0;
+    }
+
+    /* X alineada a la derecha, sin flotar */
+    .cerrar {
+        position: static;
+        transform: none;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 34px;
+        margin-left: auto;
+        padding: 0;
+        border: 1px solid #aaa59c;
+        border-radius: 3px;
+        background: transparent;
+        color: #716d65;
+        font-family: Arial, sans-serif;
+        font-size: 26px;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    .cerrar:hover {
+        background-color: #e8e2d8;
+        color: #000000;
+    }
+
+    .cerrar:hover {
+        color: #000000;
+    }
+
+    /* Área desplazable del poema */
+    .cuerpo-modal {
+        min-height: 0;
+        padding: 20px 30px 30px;
+        overflow-y: auto;
+        overflow-wrap: anywhere;
+        text-align: left;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .cuerpo-modal h3 {
+        margin: 0 0 15px;
         text-align: center;
+        font-weight: normal;
+    }
+
+    /* Texto del poema */
+    .cuerpo-modal .texto-poema {
+        margin: 15px 0 20px;
+        color: #716d65;
         font-size: 16px;
         line-height: 1.8;
-        color: #716d65;
-        margin: 15px 0 20px;
-        white-space: normal;
+        text-align: center;
+        white-space: pre-line;
         overflow-wrap: anywhere;
     }
-=======
->>>>>>> 0c7ea96fcf6ae111840cd96c75d9b0279c729555
+
+    /* Firma del autor */
+    .cuerpo-modal h2 {
+        text-align: right;
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    /* Modo oscuro */
+    .modal.modo-oscuro .contenido-modal {
+        background-color: #252420;
+        color: #e9e2d7;
+        border: 1px solid #49463f;
+    }
+
+    .modal.modo-oscuro .cabecera-modal {
+        background-color: #252420;
+        border-bottom-color: #49463f;
+    }
+
+    .modal.modo-oscuro .texto-poema {
+        color: #e9e2d7;
+    }
+
+    .modal.modo-oscuro .controles-lectura button {
+        color: #e9e2d7;
+        border-color: #625d53;
+    }
+
+    .modal.modo-oscuro .controles-lectura button:hover {
+        background-color: #49463f;
+    }
+
+    .modal.modo-oscuro .cerrar {
+        color: #e9e2d7;
+        border-color: #625d53;
+    }
+
+    .modal.modo-oscuro .cerrar:hover {
+        background-color: #49463f;
+        color: #ffffff;
+    }
+
+    /* Pantallas pequeñas */
+    @media (max-width: 480px) {
+        .contenido-modal {
+            width: 100%;
+            max-height: 85vh;
+        }
+
+        .cabecera-modal {
+            padding-left: 8px;
+            padding-right: 42px;
+        }
+
+        .controles-lectura {
+            gap: 4px;
+        }
+
+        .controles-lectura button {
+            padding: 7px;
+            font-size: 12px;
+        }
+
+        .cuerpo-modal {
+            padding: 20px 16px;
+        }
+    }
 </style>
 
 <script>
-    // función que encapsule toda la lógica de los modales
     function inicializarModales() {
-        // se seleccionan todos los botones que abren ventanas modales
-        const botonesAbrir = document.querySelectorAll(".btn-abrir");
+        const raiz = document.querySelector<HTMLElement>("#poesia");
 
-        botonesAbrir.forEach((boton) => {
-            boton.addEventListener("click", () => {
-                // se obtiene el ID de la ventana desde el atributo data-target
-                const idModal = boton.getAttribute("data-target");
+        if (!raiz || raiz.dataset.inicializada === "true") return;
 
-                if (idModal) {
-                    const modal = document.getElementById(
-                        idModal,
-                    ) as HTMLElement | null;
-                    if (modal) {
-                        modal.style.display = "flex";
-                    }
-                }
+        raiz.dataset.inicializada = "true";
+
+        const modales = Array.from(
+            raiz.querySelectorAll<HTMLElement>(".modal"),
+        );
+
+        // Configurar los controles de cada ventana.
+        modales.forEach((modal) => {
+            const texto = modal.querySelector<HTMLElement>(".texto-poema");
+            const aumentar =
+                modal.querySelector<HTMLButtonElement>(".aumentar-letra");
+            const disminuir =
+                modal.querySelector<HTMLButtonElement>(".disminuir-letra");
+            const botonTema =
+                modal.querySelector<HTMLButtonElement>(".alternar-tema");
+
+            if (!texto || !aumentar || !disminuir || !botonTema) return;
+
+            let tamano = 16;
+
+            // Cambiar entre modo claro y oscuro.
+            botonTema.addEventListener("click", () => {
+                const oscuro = modal.classList.toggle("modo-oscuro");
+
+                botonTema.textContent = oscuro
+                    ? "☀ Modo claro"
+                    : "☾ Modo oscuro";
+
+                botonTema.setAttribute("aria-pressed", String(oscuro));
+            });
+
+            // Aumentar el tamaño de las letras.
+            aumentar.addEventListener("click", () => {
+                tamano = Math.min(tamano + 2, 28);
+                texto.style.fontSize = `${tamano}px`;
+            });
+
+            // Disminuir el tamaño de las letras.
+            disminuir.addEventListener("click", () => {
+                tamano = Math.max(tamano - 2, 10);
+                texto.style.fontSize = `${tamano}px`;
             });
         });
 
-        // todos los botones de cerrar (X)
-        const botonesCerrar = document.querySelectorAll(".cerrar");
+        // Abrir y cerrar las ventanas.
+        raiz.addEventListener("click", (evento) => {
+            const objetivo = evento.target;
 
-        botonesCerrar.forEach((boton) => {
-            boton.addEventListener("click", () => {
-                // busca la ventana modal más cercana y le se asegura el tipo HTMLElement
-                const modal = boton.closest(".modal") as HTMLElement | null;
+            if (!(objetivo instanceof Element)) return;
+
+            // Abrir la ventana correspondiente al libro.
+            const botonAbrir =
+                objetivo.closest<HTMLButtonElement>(".btn-abrir");
+
+            if (botonAbrir) {
+                const idModal = botonAbrir.dataset.target;
+                const modal = idModal
+                    ? raiz.querySelector<HTMLElement>(`#${idModal}`)
+                    : null;
+
                 if (modal) {
-                    modal.style.display = "none";
+                    modal.classList.add("abierto");
+                    modal.querySelector<HTMLButtonElement>(".cerrar")?.focus();
                 }
-            });
+
+                return;
+            }
+
+            // Cerrar con la X.
+            const botonCerrar = objetivo.closest<HTMLButtonElement>(".cerrar");
+
+            if (botonCerrar) {
+                const modal = botonCerrar.closest<HTMLElement>(".modal");
+                modal?.classList.remove("abierto");
+                return;
+            }
+
+            // Cerrar al pulsar el fondo oscuro.
+            if (objetivo.classList.contains("modal")) {
+                objetivo.classList.remove("abierto");
+            }
+        });
+
+        // Cerrar con la tecla Escape.
+        document.addEventListener("keydown", (evento) => {
+            if (evento.key === "Escape") {
+                modales.forEach((modal) => {
+                    modal.classList.remove("abierto");
+                });
+            }
         });
     }
 
-    // evento de Astro para volver a ejecutar la función en cada cambio de página esto es necesario para que no deje de seguirlo buscando
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", inicializarModales, {
+            once: true,
+        });
+    } else {
+        inicializarModales();
+    }
+
     document.addEventListener("astro:page-load", inicializarModales);
 </script>
