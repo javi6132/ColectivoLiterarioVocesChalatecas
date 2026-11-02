@@ -5,20 +5,31 @@ const path = Astro.url.pathname;
 <header class="header">
   <div class="header-container">
 
-  
     <a href="/" class="logo">
       <span class="logo-name">Voces Chalatecas</span>
       <span class="logo-subtitle">COLECTIVO · LITERARIO</span>
     </a>
 
+    <!-- Botón hamburguesa (solo visible en móvil) -->
+    <button
+      type="button"
+      class="menu-toggle"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="menu-principal"
+    >
+      <span class="barra"></span>
+      <span class="barra"></span>
+      <span class="barra"></span>
+    </button>
 
-    <nav class="navigation" aria-label="Navegación principal">
-  <a href="/" class:list={["nav-link", { active: path === "/" }]}>INICIO</a>
-  <a href="/sobre-mi" class:list={["nav-link", { active: path.startsWith("/sobre-mi") }]}>SOBRE MÍ</a>
-  <a href="/libro" class:list={["nav-link", { active: path.startsWith("/libro") }]}>LIBRO</a>
-  <a href="/poesia" class:list={["nav-link", { active: path.startsWith("/poesia") }]}>POESÍA</a>
-  <a href="/fotos" class:list={["nav-link", { active: path.startsWith("/fotos") }]}>FOTOS</a>
-  <a href="/contacto" class:list={["nav-link", { active: path.startsWith("/contacto") }]}>CONTACTO</a>
+    <nav id="menu-principal" class="navigation" aria-label="Navegación principal">
+      <a href="/" class:list={["nav-link", { active: path === "/" }]}>INICIO</a>
+      <a href="/sobre-mi" class:list={["nav-link", { active: path.startsWith("/sobre-mi") }]}>SOBRE MÍ</a>
+      <a href="/libro" class:list={["nav-link", { active: path.startsWith("/libro") }]}>LIBRO</a>
+      <a href="/poesia" class:list={["nav-link", { active: path.startsWith("/poesia") }]}>POESÍA</a>
+      <a href="/fotos" class:list={["nav-link", { active: path.startsWith("/fotos") }]}>FOTOS</a>
+      <a href="/contacto" class:list={["nav-link", { active: path.startsWith("/contacto") }]}>CONTACTO</a>
     </nav>
 
   </div>
@@ -78,7 +89,16 @@ const path = Astro.url.pathname;
 
 
   /* --------------------------------
-     NAVEGACIÓN
+     BOTÓN HAMBURGUESA
+  -------------------------------- */
+
+  .menu-toggle {
+    display: none;
+  }
+
+
+  /* --------------------------------
+     NAVEGACIÓN (escritorio)
   -------------------------------- */
 
   .navigation {
@@ -119,7 +139,6 @@ const path = Astro.url.pathname;
     transition: width 0.25s ease;
   }
 
-  /* Hover */
   .nav-link:hover {
     color: var(--color-accent);
   }
@@ -128,7 +147,6 @@ const path = Astro.url.pathname;
     width: 100%;
   }
 
-  /* Página actual */
   .nav-link.active {
     color: var(--color-text);
   }
@@ -140,10 +158,14 @@ const path = Astro.url.pathname;
 
 
   /* --------------------------------
-     RESPONSIVE
+     TABLET
   -------------------------------- */
 
   @media (max-width: 900px) {
+
+    .header-container {
+      gap: 24px;
+    }
 
     .navigation {
       gap: 18px;
@@ -157,27 +179,198 @@ const path = Astro.url.pathname;
 
 
   /* --------------------------------
-     MÓVIL
+     MÓVIL: MENÚ HAMBURGUESA
   -------------------------------- */
 
   @media (max-width: 700px) {
 
     .header-container {
       min-height: 70px;
-    }
-
-    /*
-     * Por ahora ocultamos la navegación.
-     * Después construiremos el menú hamburguesa.
-     */
-    .navigation {
-      display: none;
+      gap: 16px;
     }
 
     .logo-name {
       font-size: 1.25rem;
     }
 
+    /* Botón hamburguesa */
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+
+      background: transparent;
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .menu-toggle:focus-visible {
+      outline: 2px solid var(--color-text);
+      outline-offset: 2px;
+    }
+
+    .barra {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--color-text);
+      border-radius: 2px;
+      transition:
+        transform 0.25s ease,
+        opacity 0.2s ease;
+    }
+
+    /* Animación a "X" */
+    .header.abierto .barra:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .header.abierto .barra:nth-child(2) {
+      opacity: 0;
+    }
+
+    .header.abierto .barra:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Panel desplegable debajo del header */
+    .navigation {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+
+      background: #d4cbc4;
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+
+      max-height: 0;
+      overflow: hidden;
+      visibility: hidden;
+
+      transition:
+        max-height 0.3s ease,
+        visibility 0.3s ease;
+    }
+
+    .header.abierto .navigation {
+      max-height: 80vh;
+      visibility: visible;
+    }
+
+    .nav-link {
+      padding: 16px 5%;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-link:last-child {
+      border-bottom: none;
+    }
+
+    /* Sin línea inferior en móvil */
+    .nav-link::after {
+      display: none;
+    }
+
+    /* Página actual: barra lateral */
+    .nav-link.active {
+      font-weight: bold;
+      box-shadow: inset 4px 0 0 var(--color-text);
+    }
+
+  }
+
+
+  /* --------------------------------
+     MÓVIL MUY PEQUEÑO
+  -------------------------------- */
+
+  @media (max-width: 380px) {
+
+    .logo-name {
+      font-size: 1.1rem;
+    }
+
+    .logo-subtitle {
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+    }
+
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .navigation,
+    .barra {
+      transition: none;
+    }
+
   }
 
 </style>
+
+<script>
+  function inicializarMenu() {
+    const header = document.querySelector<HTMLElement>(".header");
+    const boton = header?.querySelector<HTMLButtonElement>(".menu-toggle");
+    const nav = header?.querySelector<HTMLElement>(".navigation");
+
+    if (!header || !boton || !nav || boton.dataset.inicializado === "true") return;
+
+    boton.dataset.inicializado = "true";
+
+    const cerrar = () => {
+      header.classList.remove("abierto");
+      boton.setAttribute("aria-expanded", "false");
+      boton.setAttribute("aria-label", "Abrir menú");
+    };
+
+    const abrir = () => {
+      header.classList.add("abierto");
+      boton.setAttribute("aria-expanded", "true");
+      boton.setAttribute("aria-label", "Cerrar menú");
+    };
+
+    // Abrir / cerrar con el botón
+    boton.addEventListener("click", () => {
+      header.classList.contains("abierto") ? cerrar() : abrir();
+    });
+
+    // Cerrar al elegir una opción
+    nav.querySelectorAll("a").forEach((enlace) => {
+      enlace.addEventListener("click", cerrar);
+    });
+
+    // Cerrar al tocar fuera del header
+    document.addEventListener("click", (evento) => {
+      if (!header.contains(evento.target as Node)) cerrar();
+    });
+
+    // Cerrar con Escape
+    document.addEventListener("keydown", (evento) => {
+      if (evento.key === "Escape") cerrar();
+    });
+
+    // Si se agranda la pantalla, restablecer
+    window.matchMedia("(min-width: 701px)").addEventListener("change", (e) => {
+      if (e.matches) cerrar();
+    });
+  }
+
+  inicializarMenu();
+  document.addEventListener("astro:page-load", inicializarMenu);
+</script>
