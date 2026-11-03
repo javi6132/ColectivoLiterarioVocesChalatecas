@@ -18,53 +18,87 @@ import Layout from "./Layout/Layout.astro";
                 <p>Juan Gerardo Alfaro Escobar</p>
                 <button class="btn-abrir" data-target="modalLibro1">Ver</button>
 
-                <div id="modalLibro1" class="modal">
-                    <div class="contenido-modal">
-                        <div class="cabecera-modal">
-                            <div class="controles-lectura">
-                                <button type="button" class="alternar-tema">
-                                    ☾ Modo oscuro
-                                </button>
-                                <button
-                                    type="button"
-                                    class="disminuir-letra"
-                                    aria-label="Reducir tamaño de letra"
-                                >
-                                    A−
-                                </button>
-                                <button
-                                    type="button"
-                                    class="aumentar-letra"
-                                    aria-label="Aumentar tamaño de letra"
-                                >
-                                    A+
-                                </button>
-                            </div>
-                            <button
-                                type="button"
-                                class="cerrar"
-                                aria-label="Cerrar ventana"
-                            >
-                                &times;
-                            </button>
-                        </div>
+<div id="modalLibro1" class="modal">
+    <div class="contenido-modal">
+        <div class="cabecera-modal">
+            <div class="controles-lectura">
+                <button type="button" class="alternar-tema">
+                    ☾ Modo oscuro
+                </button>
+                <button
+                    type="button"
+                    class="disminuir-letra"
+                    aria-label="Reducir tamaño de letra"
+                >
+                    A−
+                </button>
+                <button
+                    type="button"
+                    class="aumentar-letra"
+                    aria-label="Aumentar tamaño de letra"
+                >
+                    A+
+                </button>
+            </div>
+            <button
+                type="button"
+                class="cerrar"
+                aria-label="Cerrar ventana"
+            >
+                &times;
+            </button>
+        </div>
 
-                        <div class="cuerpo-modal">
-                            <h3>Fronteras prohibidas</h3>
-<pre class="texto-poema">
-    Aquí tu poema...
-    con los espacios y sangrías exactas que dejes.
-    hola 
-    proceso
+        <div class="cuerpo-modal">
+            <h3>Fronteras prohibidas</h3>
 
-    espacio
-    a
-</pre>
-             
-                            <h2>~Juan Gerardo Alfaro Escobar</h2>
-                        </div>
+            <!-- LISTA DESPLEGABLE  -->
+            <div class="acordeon-poemas">
+                
+                <!-- POEMA 1 -->
+                <div class="item-acordeon">
+                    <button type="button" class="btn-acordeon">
+                        Poema 1 <span class="icono-flecha">▼</span>
+                    </button>
+                    <div class="cuerpo-acordeon">
+                        <pre class="texto-poema">
+    <strong>Poema</strong>
+Poema
+                        </pre>
+                        <h2>~Juan Gerardo Alfaro Escobar</h2>
                     </div>
                 </div>
+
+                <!-- POEMA 2 -->
+                <div class="item-acordeon">
+                    <button type="button" class="btn-acordeon">
+                        Poema 2 <span class="icono-flecha">▼</span>
+                    </button>
+                    <div class="cuerpo-acordeon">
+                        <pre class="texto-poema">
+Poema
+                        </pre>
+                        <h2>~Juan Gerardo Alfaro Escobar</h2>
+                    </div>
+                </div>
+
+                <!-- POEMA 3 -->
+                <div class="item-acordeon">
+                    <button type="button" class="btn-acordeon">
+                        Poema 3 <span class="icono-flecha">▼</span>
+                    </button>
+                    <div class="cuerpo-acordeon">
+                        <pre class="texto-poema">
+Poema
+                        </pre>
+                        <h2>~Juan Gerardo Alfaro Escobar</h2>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
             </article>
 
             <!-- LIBRO 2 -->
@@ -544,6 +578,102 @@ prueba
         font-weight: normal;
     }
 
+    /* ============ ACORDEÓN DE POEMAS ============ */
+.acordeon-poemas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.item-acordeon {
+    border: 1px solid #aaa59c;
+    border-radius: 6px;
+    background-color: #f9f8f6;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+}
+
+.btn-acordeon {
+    width: 100%;
+    padding: 16px 20px;
+    background: transparent;
+    border: none;
+    color: #292722;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.btn-acordeon:hover {
+    background-color: #f2efe9;
+}
+
+.icono-flecha {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+/* Estado cuando el acordeon está abierto */
+.item-acordeon.activo {
+    border-color: #292722;
+}
+
+.item-acordeon.activo .btn-acordeon {
+    background-color: #292720;
+    color: #ffffff;
+}
+
+.item-acordeon.activo .icono-flecha {
+    transform: rotate(180deg);
+}
+
+.cuerpo-acordeon {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease-out, padding 0.35s ease-out;
+    padding: 0 20px;
+    background-color: #ffffff;
+}
+
+.item-acordeon.activo .cuerpo-acordeon {
+    max-height: 800px; /* Altura máxima estimada para desplegar el contenido */
+    padding: 20px;
+    border-top: 1px solid #eeeeee;
+}
+
+/*  MODO OSCURO PARA EL ACORDEÓN O LA LISTA QUE SE ABREN DE LAS VENTANAS */
+.modal.modo-oscuro .item-acordeon {
+    background-color: #2d2c27;
+    border-color: #625d53;
+}
+
+.modal.modo-oscuro .item-acordeon.activo {
+    border-color: #e9e2d7;
+}
+
+.modal.modo-oscuro .btn-acordeon {
+    color: #e9e2d7;
+}
+
+.modal.modo-oscuro .btn-acordeon:hover {
+    background-color: #38352e;
+}
+
+.modal.modo-oscuro .item-acordeon.activo .btn-acordeon {
+    background-color: #49463f;
+    color: #ffffff;
+}
+
+.modal.modo-oscuro .cuerpo-acordeon {
+    background-color: #252420;
+    border-top-color: #49463f;
+}
     /*  MODO OSCURO  */
     .modal.modo-oscuro .contenido-modal {
         background-color: #252420;
@@ -634,11 +764,19 @@ prueba
 </style>
 
 <script>
-    function actualizarBloqueoScroll() {
+function actualizarBloqueoScroll() {
         const hayAbierto = document.querySelector(
             ".modal[data-portal='poesia'].abierto",
         );
-        document.body.style.overflow = hayAbierto ? "hidden" : "";
+        if (hayAbierto) {
+            // Calcula el ancho de la barra de desplazamiento para evitar el salto visual
+            const anchoScrollbar = window.innerWidth - document.documentElement.clientWidth;
+            document.body.style.paddingRight = `${anchoScrollbar}px`;
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+            document.body.style.paddingRight = "";
+        }
     }
 
     function cerrarTodos() {
@@ -665,12 +803,13 @@ prueba
             raiz.querySelectorAll<HTMLElement>(".modal"),
         );
 
-        modales.forEach((modal) => {
+modales.forEach((modal) => {
             // Mover el modal al <body> para que quede por encima del footer
             modal.dataset.portal = "poesia";
             document.body.appendChild(modal);
 
-            const texto = modal.querySelector<HTMLElement>(".texto-poema");
+            // Seleccionamos todos los textos de los poemas dentro del modal
+            const textos = modal.querySelectorAll<HTMLElement>(".texto-poema");
             const aumentar =
                 modal.querySelector<HTMLButtonElement>(".aumentar-letra");
             const disminuir =
@@ -678,7 +817,7 @@ prueba
             const botonTema =
                 modal.querySelector<HTMLButtonElement>(".alternar-tema");
 
-            if (!texto || !aumentar || !disminuir || !botonTema) return;
+            if (textos.length === 0 || !aumentar || !disminuir || !botonTema) return;
 
             let tamano = 16;
 
@@ -691,13 +830,17 @@ prueba
             });
 
             aumentar.addEventListener("click", () => {
-                tamano = Math.min(tamano + 2, 28);
-                texto.style.fontSize = `${tamano}px`;
+                tamano = Math.min(tamano + 2, 22);
+                textos.forEach((texto) => {
+                    texto.style.fontSize = `${tamano}px`;
+                });
             });
 
             disminuir.addEventListener("click", () => {
                 tamano = Math.max(tamano - 2, 10);
-                texto.style.fontSize = `${tamano}px`;
+                textos.forEach((texto) => {
+                    texto.style.fontSize = `${tamano}px`;
+                });
             });
         });
     }
@@ -766,4 +909,30 @@ prueba
     }
 
     document.addEventListener("astro:page-load", inicializarModales);
+
+// Control del acordeón dentro del modal
+document.addEventListener("click", (evento) => {
+    const objetivo = evento.target;
+    if (!(objetivo instanceof Element)) return;
+
+    const btnAcordeon = objetivo.closest<HTMLButtonElement>(".btn-acordeon");
+    if (!btnAcordeon) return;
+
+    const itemActual = btnAcordeon.closest<HTMLElement>(".item-acordeon");
+    if (!itemActual) return;
+
+    const modalPadre = itemActual.closest<HTMLElement>(".modal");
+    if (!modalPadre) return;
+
+    // Opcional: si prefieres que se cierre el anterior al abrir uno nuevo
+    /*
+    modalPadre.querySelectorAll(".item-acordeon").forEach((item) => {
+        if (item !== itemActual) item.classList.remove("activo");
+    });
+    */
+
+    // Alternar la apertura del poema actual hacia abajo
+    itemActual.classList.toggle("activo");
+});
+
 </script>
