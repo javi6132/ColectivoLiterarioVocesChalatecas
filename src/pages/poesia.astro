@@ -51,41 +51,16 @@ import Layout from "./Layout/Layout.astro";
 
                         <div class="cuerpo-modal">
                             <h3>Fronteras prohibidas</h3>
-                            <p class="texto-poema">
-                                La vida es breve, aunque no se lo diga a mis hijos.
+<pre class="texto-poema">
+    Aquí tu poema...
+    con los espacios y sangrías exactas que dejes.
+    hola 
+    proceso
 
-La vida es breve, y he ido acortando la mía
-
-de mil deliciosas e insensatas maneras,
-
-mil deliciosamente insensatas maneras
-
-que no le fiaré a mis hijos. El mundo es al menos
-
-cincuenta por ciento terrible, y esa estimación
-
-es conservadora, aunque no se la fíe a mis hijos.
-
-Por cada pájaro que vuela, hay una piedra lanzada a un pájaro.
-
-Por cada niño amado, un niño roto, ensacado,
-
-hundido en un lago. La vida es breve y el mundo
-
-es al menos mitad terrible, y por cada gentil
-
-extraño, hay uno que te rompería,
-
-aunque no se lo diga a mis hijos. Estoy tratando
-
-de venderles el mundo. Cualquier buen agente de bienes raíces,
-
-mientras camina a tu lado por una pocilga, pía 
-
-sobre un buen esqueleto: Este lugar podría ser lindo,
-
-¿no? Tú podrías hacer que este lugar sea lindo.
-                            </p>
+    espacio
+    a
+</pre>
+             
                             <h2>~Juan Gerardo Alfaro Escobar</h2>
                         </div>
                     </div>
@@ -135,10 +110,9 @@ sobre un buen esqueleto: Este lugar podría ser lindo,
 
                         <div class="cuerpo-modal">
                             <h3>Algún día, hoy</h3>
-                            <p class="texto-poema">
-                                Aquí debes conservar todo el texto original de
-                                tu poema, incluidos los saltos de línea.
-                            </p>
+<pre class="texto-poema">
+prueba
+</pre>
                             <h2>~Ángela Becerra</h2>
                         </div>
                     </div>
@@ -188,10 +162,9 @@ sobre un buen esqueleto: Este lugar podría ser lindo,
 
                         <div class="cuerpo-modal">
                             <h3>Algún día, hoy</h3>
-                            <p class="texto-poema">
-                                Aquí debes conservar todo el texto original de
-                                tu poema, incluidos los saltos de línea.
-                            </p>
+<pre class="texto-poema">
+prueba
+</pre>
                             <h2>~Ángela Becerra</h2>
                         </div>
                     </div>
@@ -241,10 +214,9 @@ sobre un buen esqueleto: Este lugar podría ser lindo,
 
                         <div class="cuerpo-modal">
                             <h3>Algún día, hoy</h3>
-                            <p class="texto-poema">
-                                Aquí debes conservar todo el texto original de
-                                tu poema, incluidos los saltos de línea.
-                            </p>
+<pre class="texto-poema">
+prueba
+</pre>
                             <h2>~Ángela Becerra</h2>
                         </div>
                     </div>
@@ -294,10 +266,9 @@ sobre un buen esqueleto: Este lugar podría ser lindo,
 
                         <div class="cuerpo-modal">
                             <h3>Algún día, hoy</h3>
-                            <p class="texto-poema">
-                                Aquí debes conservar todo el texto original de
-                                tu poema, incluidos los saltos de línea.
-                            </p>
+<pre class="texto-poema">
+prueba
+</pre>
                             <h2>~Ángela Becerra</h2>
                         </div>
                     </div>
@@ -347,10 +318,9 @@ sobre un buen esqueleto: Este lugar podría ser lindo,
 
                         <div class="cuerpo-modal">
                             <h3>Algún día, hoy</h3>
-                            <p class="texto-poema">
-                                Aquí debes conservar todo el texto original de
-                                tu poema, incluidos los saltos de línea.
-                            </p>
+<pre class="texto-poema">
+prueba
+</pre>
                             <h2>~Ángela Becerra</h2>
                         </div>
                     </div>
@@ -361,7 +331,7 @@ sobre un buen esqueleto: Este lugar podría ser lindo,
 </Layout>
 
 <style>
-    /* ============ SECCIÓN ============ */
+
     .Poesia {
         width: 92%;
         max-width: 1250px;
@@ -382,7 +352,7 @@ sobre un buen esqueleto: Este lugar podría ser lindo,
         margin-bottom: clamp(24px, 5vw, 50px);
     }
 
-    /* ============ GRILLA DE LIBROS ============ */
+    /* GRILLA DE LIBROS */
     .libros {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(140px, 145px));
@@ -439,7 +409,7 @@ sobre un buen esqueleto: Este lugar podría ser lindo,
         color: white;
     }
 
-    /* ============ MODAL ============ */
+    /*  MODAL  */
     .modal {
         display: none;
         position: fixed;
@@ -574,7 +544,7 @@ sobre un buen esqueleto: Este lugar podría ser lindo,
         font-weight: normal;
     }
 
-    /* ============ MODO OSCURO ============ */
+    /*  MODO OSCURO  */
     .modal.modo-oscuro .contenido-modal {
         background-color: #252420;
         color: #e9e2d7;
@@ -602,14 +572,14 @@ sobre un buen esqueleto: Este lugar podría ser lindo,
         color: #ffffff;
     }
 
-    /* ============ TABLET ============ */
+    /* TABLET */
     @media (max-width: 900px) {
         .libros {
             grid-template-columns: repeat(auto-fill, minmax(140px, 150px));
         }
     }
 
-    /* ============ MÓVIL ============ */
+    /*  MÓVIL  */
     @media (max-width: 600px) {
         .libros {
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -645,7 +615,7 @@ sobre un buen esqueleto: Este lugar podría ser lindo,
         }
     }
 
-    /* ============ MÓVIL MUY PEQUEÑO ============ */
+    /* MÓVIL MUY PEQUEÑO */
     @media (max-width: 360px) {
         .libros {
             grid-template-columns: 1fr;
