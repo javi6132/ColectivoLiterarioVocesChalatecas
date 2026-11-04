@@ -1,14 +1,12 @@
 ---
 import Layout from "./Layout/Layout.astro";
 
-// Agregar fotos
-const fotos = [
-  { src: "/imagenes/contacto.jpg", alt: "foto 1" },
-  { src: "/imagenes/galeria1.jpg", alt: "foto 2" },
-  { src: "/imagenes/galeria2s.jpg", alt: "foto 3" },
-  { src: "/imagenes/foto-04.jpg", alt: "foto 4" },
-  { src: "/imagenes/foto-05.jpg", alt: "foto 5" },
-  { src: "/imagenes/foto-06.jpg", alt: "foto 6" },
+// Reels de Facebook: 
+const reels = [
+  "https://www.facebook.com/reel/1642400850890747",
+  "https://www.facebook.com/reel/2022541381804764",
+  "https://www.facebook.com/reel/1302387908675615",
+  "https://www.facebook.com/reel/1025897093115596",
 ];
 ---
 
@@ -18,105 +16,26 @@ const fotos = [
 
       <h1>Galería</h1>
       <p class="galeria-intro">
-        Un vistazo a nuestras fotos.
+        Un vistazo a nuestros videos.
       </p>
 
-      <div class="galeria-grid">
-        {fotos.map((foto, i) => (
-          <button
-            type="button"
-            class="galeria-item"
-            data-index={i}
-            aria-label={`Ampliar imagen: ${foto.alt}`}
-          >
-            <img src={foto.src} alt={foto.alt} loading="lazy" />
-          </button>
+      <div class="reels-grid">
+        {reels.map((url) => (
+          <iframe
+            src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&width=267`}
+            width="267"
+            height="476"
+            loading="lazy"
+            title="Reel de Voces Chalatecas"
+            style="border:none;overflow:hidden"
+            allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          ></iframe>
         ))}
       </div>
 
     </div>
   </section>
-
-
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lightbox-cerrar" id="lightbox-cerrar" aria-label="Cerrar">✕</button>
-    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Foto anterior">‹</button>
-    <img class="lightbox-img" id="lightbox-img" src="" alt="" />
-    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Foto siguiente">›</button>
-  </div>
-
-  <script define:vars={{ fotos }}>
-    function initGaleria() {
-      const lightbox = document.getElementById("lightbox");
-      const lightboxImg = document.getElementById("lightbox-img");
-      if (!lightbox || !lightboxImg) return; // no estamos en la página de galería
-
-      let indiceActual = 0;
-
-      function mostrarFoto(indice) {
-        indiceActual = (indice + fotos.length) % fotos.length;
-        const foto = fotos[indiceActual];
-        lightboxImg.src = foto.src;
-        lightboxImg.alt = foto.alt;
-      }
-
-      function abrirLightbox(indice) {
-        mostrarFoto(indice);
-        lightbox.classList.add("activo");
-        lightbox.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
-      }
-
-      function cerrarLightbox() {
-        lightbox.classList.remove("activo");
-        lightbox.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
-      }
-
-     
-      // listener vive en "document" y no en cada botón 
-      document.addEventListener("click", (e) => {
-        const item = e.target.closest(".galeria-item");
-        if (item) {
-          const indice = parseInt(item.getAttribute("data-index"), 10);
-          abrirLightbox(indice);
-          return;
-        }
-
-        if (e.target.closest("#lightbox-cerrar")) {
-          cerrarLightbox();
-          return;
-        }
-
-        if (e.target.closest("#lightbox-prev")) {
-          mostrarFoto(indiceActual - 1);
-          return;
-        }
-
-        if (e.target.closest("#lightbox-next")) {
-          mostrarFoto(indiceActual + 1);
-          return;
-        }
-
-        // clic en el fondo oscuro 
-        if (e.target === lightbox) {
-          cerrarLightbox();
-        }
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (!lightbox.classList.contains("activo")) return;
-        if (e.key === "Escape") cerrarLightbox();
-        if (e.key === "ArrowLeft") mostrarFoto(indiceActual - 1);
-        if (e.key === "ArrowRight") mostrarFoto(indiceActual + 1);
-      });
-    }
-
-  
-    initGaleria();
-    // transición de página de Astro.
-    document.addEventListener("astro:page-load", initGaleria);
-  </script>
 </Layout>
 
 <style>
@@ -142,156 +61,18 @@ const fotos = [
     max-width: 700px;
   }
 
-  /* GRID DE FOTOS */
-  .galeria-grid {
+  /* REELS */
+  .reels-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(267px, 1fr));
     gap: 18px;
-  }
-
-  .galeria-item {
-    position: relative;
-    display: block;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    padding: 0;
-    border: 0;
-    background: #eee;
-    cursor: pointer;
-    overflow: hidden;
-  }
-
-  .galeria-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.35s ease;
-  }
-
-  .galeria-item:hover img {
-    transform: scale(1.05);
-  }
-
-  .galeria-item::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0);
-    transition: background 0.25s ease;
-  }
-
-  .galeria-item:hover::after {
-    background: rgba(0, 0, 0, 0.1);
-  }
-
-  .galeria-item:focus-visible {
-    outline: 3px solid var(--color-accent);
-    outline-offset: 2px;
-  }
-
-  /* LIGHTBOX */
-  .lightbox {
-    position: fixed;
-    inset: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 1000;
-  }
-
-  .lightbox.activo {
-    display: flex;
-  }
-
-  .lightbox-img {
-    max-width: 88vw;
-    max-height: 85vh;
-    object-fit: contain;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  }
-
-  .lightbox-cerrar {
-    position: absolute;
-    top: 20px;
-    right: 24px;
-    width: 44px;
-    height: 44px;
-    border: 0;
-    background: transparent;
-    color: #fff;
-    font-size: 1.6rem;
-    cursor: pointer;
-    line-height: 1;
-    transition: opacity 0.2s ease;
-  }
-
-  .lightbox-cerrar:hover {
-    opacity: 0.7;
-  }
-
-  .lightbox-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 52px;
-    height: 52px;
-    border: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.12);
-    color: #fff;
-    font-size: 2rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s ease;
-  }
-
-  .lightbox-nav:hover {
-    background: rgba(255, 255, 255, 0.25);
-  }
-
-  .lightbox-prev {
-    left: 20px;
-  }
-
-  .lightbox-next {
-    right: 20px;
-  }
-
-  /* TABLET */
-  @media (max-width: 900px) {
-    .galeria-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
+    justify-items: center;
   }
 
   /* MÓVIL */
   @media (max-width: 600px) {
     .galeria {
       padding: 20px 0 60px;
-    }
-
-    .galeria-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .lightbox-nav {
-      width: 40px;
-      height: 40px;
-      font-size: 1.5rem;
-    }
-
-    .lightbox-prev {
-      left: 10px;
-    }
-
-    .lightbox-next {
-      right: 10px;
     }
   }
 </style>
