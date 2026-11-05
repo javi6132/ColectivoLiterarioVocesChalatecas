@@ -1,70 +1,13 @@
 ---
 import Layout from "./Layout/Layout.astro";
----
 
-<Layout title="Poesia | Voces Chalatecas">
-    <section class="Poesia" id="poesia">
-        <h1>Poemas publicados</h1>
-        <div class="espacio"></div>
-
-        <section class="libros">
-            <!-- LIBRO 1 -->
-            <article class="libro">
-                <img
-                    src="imagenes/poesia/FronterasProhibidas.jpg"
-                    alt="Fronteras prohibidas"
-                />
-                <h2>Fronteras prohibidas</h2>
-                <p>Juan Gerardo Alfaro Escobar</p>
-                <button class="btn-abrir" data-target="modalLibro1">Ver</button>
-
-<div id="modalLibro1" class="modal">
-    <div class="contenido-modal">
-        <div class="cabecera-modal">
-            <div class="controles-lectura">
-                <button type="button" class="alternar-tema">
-                    ☾ Modo oscuro
-                </button>
-                <button
-                    type="button"
-                    class="disminuir-letra"
-                    aria-label="Reducir tamaño de letra"
-                >
-                    A−
-                </button>
-                <button
-                    type="button"
-                    class="aumentar-letra"
-                    aria-label="Aumentar tamaño de letra"
-                >
-                    A+
-                </button>
-            </div>
-            <button
-                type="button"
-                class="cerrar"
-                aria-label="Cerrar ventana"
-            >
-                &times;
-            </button>
-        </div>
-
-        <div class="cuerpo-modal">
-            <h3>Fronteras prohibidas</h3>
-
-            <!-- LISTA DESPLEGABLE  -->
-            <div class="acordeon-poemas">
-                
-                <!-- POEMA 1 -->
-                <div class="item-acordeon">
-                    <button type="button" class="btn-acordeon">
-                        Poema 1 <span class="icono-flecha">▼</span>
-                    </button>
-                    <div class="cuerpo-acordeon">
-                        <pre class="texto-poema">
-    <strong>Palabra pura</strong>
-
-Yo tampoco sé porque escribo poesía,
+const poemas = [
+    {
+        id: "palabra-pura",
+        titulo: "Palabra pura",
+        autor: "Juan Gerardo Alfaro Escobar",
+        subtitulo: "De la obra 'Fronteras prohibidas'",
+        contenido: `Yo tampoco sé porque escribo poesía,
 ni sé porque desangran
 mis huellas dactilares en la noche.
 La poesía me persigue desde niño,
@@ -102,22 +45,14 @@ pero jamás sentí tanto amor por una cosa en la vida,
 de hacer arder con mis versos al mundo,
 imaginando que mis manos son cometas 
 que escriben el idioma de la luna.
-
-                        </pre>
-                        <h2>~Juan Gerardo Alfaro Escobar</h2>
-                    </div>
-                </div>
-
-                <!-- POEMA 2 -->
-                <div class="item-acordeon">
-                    <button type="button" class="btn-acordeon">
-                        Poema 2 <span class="icono-flecha">▼</span>
-                    </button>
-                    <div class="cuerpo-acordeon">
-                        <pre class="texto-poema">
-<strong>Legado.</strong>
-
-Chalatenango:
+`
+    },
+    {
+        id: "legado",
+        titulo: "Legado",
+        autor: "Juan Gerardo Alfaro Escobar",
+        subtitulo: "De la obra 'Fronteras prohibidas'",
+        contenido: `Chalatenango:
 el día que el sereno de la noche
 arrebate el alma mía,
 te dejaré como herencia
@@ -188,769 +123,339 @@ Te regalo las palabras
 que hoy me brotan del alma
 Como pájaros desgranados
 en el trópico de tus azules colinas.
+`
+    }
+    
+];
+---
 
-                        </pre>
-                        <h2>~Juan Gerardo Alfaro Escobar</h2>
-                    </div>
-                </div>
+<Layout title="Poesia | Voces Chalatecas">
+    <section class="contenedor-poesia">
+        <!-- Encabezado -->
+        <header class="encabezado">
+            <span class="subtitulo-seccion">Antología de mi libro</span>
+            <h1>Poemas Publicados</h1>
+            <div class="linea-limpia"></div>
+            <p class="descripcion">
+                Es una colección de poemas que busca sumergir al lector en una variedad de ideas y sentimientos, combinando el amor, la fe, la esperanza, el respeto y la paz.
+            </p>
+            <!-- espacio -->
+            
+        </header>
 
-                <!-- POEMA 3 -->
-                <div class="item-acordeon">
-                    <button type="button" class="btn-acordeon">
-                        Poema 3 <span class="icono-flecha">▼</span>
-                    </button>
-                    <div class="cuerpo-acordeon">
-                        <pre class="texto-poema">
-Profecía.
-
-Este libro es un arco
-y mis poemas son las flechas
-que lanzo en este paisaje poblado de pinos.
-Chalatenango:
-pueblo imaginario
-anclado en una colina de esperanzas.
-Al fondo de estos versos te dejo
-las auroras cantando
-a solas en la noche.
-Y los pericos adornando
-los lienzos de tu geografía.
-Anunciaré para ti palabras de profeta:
-“Habrá alguien que tiemble al leer en tus paisajes
-la belleza de tus montañas encantadas
-y sus fértiles cafetales en flor”.
-
-                        </pre>
-                        <h2>~Juan Gerardo Alfaro Escobar</h2>
-                    </div>
-                </div>
-                <!-- POEMA 4 -->
-                <div class="item-acordeon">
-                    <button type="button" class="btn-acordeon">
-                        Poema 4 <span class="icono-flecha">▼</span>
-                    </button>
-                    <div class="cuerpo-acordeon">
-                        <pre class="texto-poema">
-Buscadla.
-
-La inspiración se halla en todas partes;
-no la busquéis sólo en el corazón de un hombre herido,
-o en los amores febriles que arrebatan la vida.
-No la busquéis en el frenesí de un beso,
-buscadla en las fronteras prohibidas;
-en las voces desterradas
- del que cae de un muro y no se levanta.
-Buscad la inspiración en el dolor de un loco
- sediento de amor y de cordura.
-Buscadla en los trigales
- donde se siembran nuevos versos y quimeras.
-
-Buscadla en el dolor de parto de un inmigrante en países extraños.
-En la muñeca sin ojos de la niña inmigrante que cruzó la frontera.
-Buscadla en el fugitivo que pernocta en los desiertos sombríos;
-en la niña inocente a la que le apedrearon su vientre,
-mientras cruzaba países y fronteras lejanas.
-
-Buscadla en el expatriado.
-En el niño de pies descalzos
- que tiene hambre de amor y sed de justicia.
-Buscadla en el arroyuelo, 
-en el desierto, 
-en el muro, 
-en la efervescencia de la vida.
-
-Buscadla en los vergeles de invierno 
-que besan el paisaje florido.
-En la niebla que viaja desnuda
- sobre los rieles del tiempo.
-En el patio sin ventanas
- donde habitan los besos inconclusos de amores fugaces.
-Buscadla en las marionetas del deseo
- y en las perfidias de pasiones prohibidas.
-Buscadla en el sol que brilla
- desde la edad temprana del hombre.
-Encuentra la inspiración en una lágrima, 
-en el ala rota de esos amores sin antídoto.
-
-Buscadla en el río que corre desesperado 
-entre volcanes de fuego.
-En esa fuerza abrumadora
- que enmudece la piel y el corazón;
-en el exilio que sufre un enfermo de amor.
-
-Buscadla en el árbol ancestral y su sombra,
-en la liebre, en la luna en el mar y sus olas;
-en los dientes de leche que muerden la melancolía.
-Buscadla en el poeta que ha sido capaz 
-de vaciar todo su dolor en un poema.
-
-Buscadla en los días de junio, 
-cuando las lágrimas se vuelven golondrinas 
-alzando vuelo hacia la desesperanza.
-
-Buscadla en tu madre patria, 
-en el paisaje de tu tierra querida.
-En la muerte de un poeta y sus versos.
-en la alborada bordada de celajes excelsos y
-en la rítmica sinfonía de la cigarra que canta.
-
-Buscadla en los amores que arrebatan la vida,
- en los atardeceres de marzo, 
-esos que se pintan como rojos claveles
- de arreboles y ocasos.
-
-Buscadla en los mártires que han sido el blanco
- de un francotirador maldito.
-Buscadla en tu tierra, en tu piel, 
-en las huellas dactilares de esa musa bohemia
- que es tu patria querida.
-
-Buscad la inspiración en todas partes 
-y si un día la encuentras enciende una fogata de versos
- en el corazón de los hombres
- que atraviesan llorando las fronteras prohibidas. 
-
-                        </pre>
-                        <h2>~Juan Gerardo Alfaro Escobar</h2>
-                    </div>
-                </div>
-                                <!-- POEMA 5 -->
-                <div class="item-acordeon">
-                    <button type="button" class="btn-acordeon">
-                        Poema 5 <span class="icono-flecha">▼</span>
-                    </button>
-                    <div class="cuerpo-acordeon">
-                        <pre class="texto-poema">
-Yo te prefiero a ti
-
-Entre tu beso y tu risa
-yo prefiero mi amor
-tu incandescente mirada.
-
-Entre tu abrazo y tus celos
-yo prefiero tu intempestiva locura,
-que me arrebata el aliento
-y me devuelve la vida.
-
-Entre tu gemido y tu pecho
-yo prefiero sumergirme en tu río
- y beberme la lluvia de tu senda florida.
-
-Entre tus caricias ardientes
-y tu sed infinita
-yo prefiero la efervescencia
-de tus estrellas fugaces.
-
-Entre tu cuerpo perfecto
-y tus poemas en flor,
-yo prefiero los pétalos
-de tu corazón y sus versos.
-Porque la belleza es efímera
-pero el alma, el alma perdura.
-
-                        </pre>
-                        <h2>~Juan Gerardo Alfaro Escobar</h2>
-                    </div>
-                </div>
-
+        <!-- Barra de Herramientas de Lectura -->
+        <div class="barra-lectura">
+            <span class="label-herramientas">Ajustes de lectura:</span>
+            <div class="botones-control">
+                <button id="disminuirTexto" title="Reducir fuente">A-</button>
+                <button id="resetTexto" title="Tamaño predeterminado">100%</button>
+                <button id="aumentarTexto" title="Aumentar fuente">A+</button>
+                <button id="alternarModoContraste" class="btn-modo" title="Cambiar modo de lectura">
+                    Modo oscuro
+                </button>
             </div>
         </div>
-    </div>
-</div>
-            </article>
-        </section>
+
+        <!-- Lista de Poemas -->
+        <main class="lista-poemas">
+            {poemas.map((poema) => (
+                <article class="tarjeta-poema" id={poema.id}>
+                    <header class="cabecera-poema">
+                        <span class="etiqueta-obra">{poema.subtitulo}</span>
+                        <h2>{poema.titulo}</h2>
+                        <div class="autor-bloque">
+                            <span class="por">Por </span>
+                            <span class="nombre-autor">{poema.autor}</span>
+                        </div>
+                    </header>
+
+                    <div class="cuerpo-poema">
+                        <div class="capitular">{poema.contenido.charAt(0)}</div>
+                        <pre class="texto-poema">{poema.contenido.slice(1)}</pre>
+                    </div>
+
+                    <footer class="pie-poema">
+                        <span class="adorno-final">✦   ✦   ✦</span>
+                    </footer>
+                </article>
+            ))}
+        </main>
     </section>
 </Layout>
 
 <style>
-    /* ===== FOOTER PEGADO AL FONDO ===== */
-    :global(html) {
-        min-height: 100%;
-        margin: 0;
+    :root {
+        --color-fondo-pagina: #fbf9f5;
+        --color-tarjeta: #ffffff;
+        --color-texto-principal: #2b2927;
+        --color-texto-secundario: #6b655c;
+        --color-acento: #8c6d3f;
+        --color-borde: #e8e2d5;
+        --color-barra: #f3efe6;
+        --fuente-titulo: Georgia, serif;
+        --fuente-cuerpo: Georgia, serif;
+    }
+
+    body.modo-lectura-sepia {
+        --color-fondo-pagina: #1f1d1a;
+        --color-tarjeta: #292623;
+        --color-texto-principal: #e6dfd5;
+        --color-texto-secundario: #a8a095;
+        --color-acento: #d4a359;
+        --color-borde: #3d3934;
+        --color-barra: #24221f;
     }
 
     :global(body) {
-        min-height: 100vh;
-        min-height: 100dvh;
+        background-color: var(--color-fondo-pagina);
+        color: var(--color-texto-principal);
+        transition: background-color 0.3s ease, color 0.3s ease;
         margin: 0;
-        display: flex;
-        flex-direction: column;
     }
 
-    :global(footer) {
-        margin-top: auto;
-        margin-bottom: 0;
-        flex-shrink: 0;
-    }
-
-    .Poesia {
-        flex: 1 0 auto;
-        width: 92%;
-        max-width: 1250px;
-        margin: clamp(20px, 5vw, 35px) auto 50px;
-        color: #292722;
-        font-family: Georgia, "Times New Roman", serif;
-    }
-
-    .Poesia h1 {
-        margin: 0;
-        font-size: clamp(26px, 6vw, 40px);
-        font-weight: normal;
-        line-height: 1.2;
-        text-align: center;
-    }
-
-    .espacio {
-        margin-bottom: clamp(24px, 5vw, 50px);
-    }
-
-    /* GRILLA DE LIBROS */
-    .libros {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(140px, 145px));
-        justify-content: center;
-        gap: clamp(20px, 4vw, 38px);
-        width: 100%;
-    }
-
-    .libro {
-        width: 100%;
-        text-align: center;
-    }
-
-    .libro > img {
-        width: 100%;
-        max-width: 138px;
-        aspect-ratio: 2 / 3;
-        height: auto;
-        object-fit: cover;
-        display: block;
+    .contenedor-poesia {
+        max-width: 820px;
         margin: 0 auto;
-        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.12);
+        padding: clamp(20px, 4vw, 50px) 20px 80px;
     }
 
-    .libro > h2 {
-        min-height: 36px;
-        margin: 16px 0 5px;
-        font-size: 13px;
-        line-height: 18px;
-        font-weight: normal;
+    .encabezado {
+        text-align: center;
+        margin-bottom: 30px;
     }
 
-    .libro > p {
-        min-height: 32px;
-        margin: 0;
-        font-size: 11px;
-        line-height: 15px;
-        color: #716d65;
+    .subtitulo-seccion {
+        display: block;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--color-acento);
+        margin-bottom: 8px;
+        font-weight: 600;
     }
 
-    .btn-abrir {
-        width: 87px;
-        min-height: 40px;
-        margin-top: 14px;
-        background-color: transparent;
-        border: 1px solid #aaa59c;
-        color: #403d37;
-        font-family: Georgia, "Times New Roman", serif;
-        cursor: pointer;
+    .encabezado h1 {
+        font-family: var(--fuente-titulo);
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        font-weight: 700;
+        margin: 0 0 12px;
+        line-height: 1.15;
     }
 
-    .btn-abrir:hover {
-        background-color: #292720;
-        color: white;
+    .descripcion {
+        font-size: 1.05rem;
+        color: var(--color-texto-secundario);
+        max-width: 500px;
+        margin: 0 auto;
+        line-height: 1.5;
+        font-style: italic;
     }
 
-    /*  MODAL  */
-    .modal {
-        display: none;
-        position: fixed;
-        inset: 0;
-        z-index: 2147483647;
-        padding: 16px;
-        box-sizing: border-box;
-        background-color: rgba(0, 0, 0, 0.6);
-        justify-content: center;
+.linea-limpia {
+  width: 400px;
+  height: 3px;
+  background-color: var(--color-acento);
+  margin: -10px auto 12px;
+  border-radius: 2px;
+}
+
+
+    .barra-lectura {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--color-barra);
+        padding: 8px 16px;
+        border-radius: 8px;
+        margin-bottom: 40px;
+        border: 1px solid var(--color-borde);
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .label-herramientas {
+        font-size: 0.85rem;
+        color: var(--color-texto-secundario);
+    }
+
+    .botones-control {
+        display: flex;
+        gap: 8px;
         align-items: center;
     }
 
-    .modal.abierto {
-        display: flex;
+    .botones-control button {
+        background: transparent;
+        border: 1px solid var(--color-borde);
+        background-color: var(--color-tarjeta);
+        color: var(--color-texto-principal);
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
     }
 
-    .contenido-modal {
+    .botones-control button:hover {
+        border-color: var(--color-acento);
+        color: var(--color-acento);
+    }
+
+    .btn-modo {
+        margin-left: 8px;
+        font-weight: 600;
+    }
+
+    .lista-poemas {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .tarjeta-poema {
+        background-color: var(--color-tarjeta);
+        border: 1px solid var(--color-borde);
+        border-radius: 12px;
+        padding: clamp(25px, 5vw, 45px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .cabecera-poema {
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 1px dashed var(--color-borde);
+        padding-bottom: 20px;
+    }
+
+    .etiqueta-obra {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--color-acento);
+    }
+
+    .cabecera-poema h2 {
+        font-family: var(--fuente-titulo);
+        font-size: clamp(1.6rem, 4vw, 2.3rem);
+        margin: 8px 0;
+        font-weight: 600;
+    }
+
+    .autor-bloque {
+        font-size: 0.95rem;
+        color: var(--color-texto-secundario);
+        font-style: italic;
+    }
+
+    .nombre-autor {
+        font-weight: 600;
+        color: var(--color-texto-principal);
+    }
+
+    .cuerpo-poema {
         position: relative;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        max-width: 600px;
-        max-height: 85vh;
-        max-height: 85dvh;
-        box-sizing: border-box;
-        overflow: hidden;
-        border-radius: 10px;
-        background-color: #ffffff;
-        color: #333333;
-        text-align: left;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        transition:
-            background-color 0.2s ease,
-            color 0.2s ease;
+        max-width: 580px;
+        margin: 0 auto;
+        line-height: 1.9;
+        font-size: var(--tamano-poema, 1.05rem);
+        font-family: var(--fuente-cuerpo);
     }
 
-    .cabecera-modal {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 10px;
-        flex-shrink: 0;
-        padding: 8px 12px;
-        box-sizing: border-box;
-        background-color: #ffffff;
-        border-bottom: 1px solid #eeeeee;
+    .capitular {
+        float: left;
+        font-family: var(--fuente-titulo);
+        font-size: 3.5rem;
+        line-height: 0.8;
+        padding-top: 4px;
+        padding-right: 8px;
+        color: var(--color-acento);
+        font-weight: bold;
     }
 
-    .controles-lectura {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 6px;
-        min-width: 0;
-    }
-
-    .controles-lectura button {
-        min-height: 40px;
-        min-width: 40px;
-        padding: 6px 12px;
-        border: 1px solid #aaa59c;
-        border-radius: 3px;
-        background: transparent;
-        color: #403d37;
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 14px;
-        cursor: pointer;
-    }
-
-    .controles-lectura button:hover {
-        background-color: #e8e2d8;
-    }
-
-    .cerrar {
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        margin-left: auto;
-        padding: 0;
-        border: 1px solid #aaa59c;
-        border-radius: 3px;
-        background: transparent;
-        color: #716d65;
-        font-family: Arial, sans-serif;
-        font-size: 26px;
-        line-height: 1;
-        cursor: pointer;
-    }
-
-    .cerrar:hover {
-        background-color: #e8e2d8;
-        color: #000000;
-    }
-
-    .cuerpo-modal {
-        flex: 1;
-        min-height: 0;
-        padding: 20px clamp(16px, 5vw, 30px) 30px;
-        overflow-y: auto;
-        overflow-wrap: anywhere;
-        text-align: left;
-        overscroll-behavior: contain;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .cuerpo-modal h3 {
-        margin: 0 0 15px;
-        text-align: center;
-        font-weight: normal;
-        font-size: clamp(18px, 4.5vw, 22px);
-    }
-
-    .cuerpo-modal .texto-poema {
-        margin: 15px 0 20px;
-        color: #716d65;
-        font-size: 16px;
-        line-height: 1.8;
-        text-align: center;
+    .texto-poema {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        color: var(--color-texto-principal);
         white-space: pre-line;
+        margin: 0;
         overflow-wrap: anywhere;
     }
 
-    .cuerpo-modal h2 {
-        min-height: 0;
-        margin: 0;
-        text-align: right;
-        font-size: 16px;
-        font-weight: normal;
+    .pie-poema {
+        text-align: center;
+        margin-top: 35px;
+        padding-top: 15px;
     }
 
-    /* ============ ACORDEÓN DE POEMAS ============ */
-    .acordeon-poemas {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin-top: 15px;
+    .adorno-final {
+        color: var(--color-acento);
+        font-size: 0.8rem;
+        letter-spacing: 6px;
+        opacity: 0.6;
     }
 
-    .item-acordeon {
-        border: 1px solid #aaa59c;
-        border-radius: 6px;
-        background-color: #f9f8f6;
-        overflow: hidden;
-        transition: border-color 0.2s ease;
-    }
-
-    .btn-acordeon {
-        width: 100%;
-        padding: 16px 20px;
-        background: transparent;
-        border: none;
-        color: #292722;
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 16px;
-        text-align: left;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
-        font-weight: normal;
-    }
-
-    .btn-acordeon:hover {
-        background-color: #f2efe9;
-    }
-
-    .icono-flecha {
-        font-size: 12px;
-        transition: transform 0.3s ease;
-    }
-
-    /* Estado cuando el acordeon está abierto */
-    .item-acordeon.activo {
-        border-color: #292722;
-    }
-
-    .item-acordeon.activo .btn-acordeon {
-        background-color: #292720;
-        color: #ffffff;
-    }
-
-    .item-acordeon.activo .icono-flecha {
-        transform: rotate(180deg);
-    }
-
-    .cuerpo-acordeon {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.35s ease-out, padding 0.35s ease-out;
-        padding: 0 20px;
-        background-color: #ffffff;
-    }
-
-    .item-acordeon.activo .cuerpo-acordeon {
-        max-height: 3800px; /* Altura máxima estimada para desplegar el contenido */
-        padding: 20px;
-        border-top: 1px solid #eeeeee;
-    }
-
-    /*  MODO OSCURO PARA EL ACORDEÓN O LA LISTA QUE SE ABREN DE LAS VENTANAS */
-    .modal.modo-oscuro .item-acordeon {
-        background-color: #2d2c27;
-        border-color: #625d53;
-    }
-
-    .modal.modo-oscuro .item-acordeon.activo {
-        border-color: #e9e2d7;
-    }
-
-    .modal.modo-oscuro .btn-acordeon {
-        color: #e9e2d7;
-    }
-
-    .modal.modo-oscuro .btn-acordeon:hover {
-        background-color: #38352e;
-    }
-
-    .modal.modo-oscuro .item-acordeon.activo .btn-acordeon {
-        background-color: #49463f;
-        color: #ffffff;
-    }
-
-    .modal.modo-oscuro .cuerpo-acordeon {
-        background-color: #252420;
-        border-top-color: #49463f;
-    }
-
-    /*  MODO OSCURO  */
-    .modal.modo-oscuro .contenido-modal {
-        background-color: #252420;
-        color: #e9e2d7;
-        border: 1px solid #49463f;
-    }
-
-    .modal.modo-oscuro .cabecera-modal {
-        background-color: #252420;
-        border-bottom-color: #49463f;
-    }
-
-    .modal.modo-oscuro .texto-poema {
-        color: #e9e2d7;
-    }
-
-    .modal.modo-oscuro .controles-lectura button,
-    .modal.modo-oscuro .cerrar {
-        color: #e9e2d7;
-        border-color: #625d53;
-    }
-
-    .modal.modo-oscuro .controles-lectura button:hover,
-    .modal.modo-oscuro .cerrar:hover {
-        background-color: #49463f;
-        color: #ffffff;
-    }
-
-    /* TABLET */
-    @media (max-width: 900px) {
-        .libros {
-            grid-template-columns: repeat(auto-fill, minmax(140px, 150px));
-        }
-    }
-
-    /*  MÓVIL  */
     @media (max-width: 600px) {
-        .libros {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 24px 16px;
+        .barra-lectura {
+            flex-direction: column;
+            gap: 10px;
+            align-items: stretch;
+            text-align: center;
         }
 
-        .libro > img {
-            max-width: 100%;
-        }
-
-        .btn-abrir {
-            width: 100%;
-            max-width: 120px;
-        }
-
-        .modal {
-            padding: 8px;
-        }
-
-        .contenido-modal {
-            max-height: 92vh;
-            max-height: 92dvh;
-        }
-
-        .controles-lectura button {
-            font-size: 13px;
-            padding: 6px 10px;
-        }
-
-        .cuerpo-modal .texto-poema {
-            font-size: 15px;
-            line-height: 1.7;
-        }
-    }
-
-    /* MÓVIL MUY PEQUEÑO */
-    @media (max-width: 360px) {
-        .libros {
-            grid-template-columns: 1fr;
-        }
-
-        .libro > img {
-            max-width: 160px;
-        }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .contenido-modal {
-            transition: none;
+        .botones-control {
+            justify-content: center;
         }
     }
 </style>
 
 <script>
-function actualizarBloqueoScroll() {
-        const hayAbierto = document.querySelector(
-            ".modal[data-portal='poesia'].abierto",
-        );
-        if (hayAbierto) {
-            // Calcula el ancho de la barra de desplazamiento para evitar el salto visual
-            const anchoScrollbar = window.innerWidth - document.documentElement.clientWidth;
-            document.body.style.paddingRight = `${anchoScrollbar}px`;
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "";
-            document.body.style.paddingRight = "";
+    function inicializarLector() {
+        let tamanoActual = 1.05;
+        const textoPoemas = document.querySelectorAll<HTMLElement>('.cuerpo-poema');
+        const btnAumentar = document.getElementById('aumentarTexto');
+        const btnDisminuir = document.getElementById('disminuirTexto');
+        const btnReset = document.getElementById('resetTexto');
+        const btnModo = document.getElementById('alternarModoContraste');
+
+        function actualizarTamano() {
+            textoPoemas.forEach(el => {
+                el.style.setProperty('--tamano-poema', `${tamanoActual}rem`);
+            });
         }
-    }
 
-    function cerrarTodos() {
-        document
-            .querySelectorAll(".modal[data-portal='poesia']")
-            .forEach((m) => m.classList.remove("abierto"));
-        actualizarBloqueoScroll();
-    }
-
-    function inicializarModales() {
-        const raiz = document.querySelector<HTMLElement>("#poesia");
-
-        if (!raiz || raiz.dataset.inicializada === "true") return;
-
-        raiz.dataset.inicializada = "true";
-
-        // Limpiar modales de una visita anterior (si la página se recarga con transiciones)
-        document
-            .querySelectorAll(".modal[data-portal='poesia']")
-            .forEach((m) => m.remove());
-        document.body.style.overflow = "";
-
-        const modales = Array.from(
-            raiz.querySelectorAll<HTMLElement>(".modal"),
-        );
-
-modales.forEach((modal) => {
-            // Mover el modal al <body> para que quede por encima del footer
-            modal.dataset.portal = "poesia";
-            document.body.appendChild(modal);
-
-            // Seleccionamos todos los textos de los poemas dentro del modal
-            const textos = modal.querySelectorAll<HTMLElement>(".texto-poema");
-            const aumentar =
-                modal.querySelector<HTMLButtonElement>(".aumentar-letra");
-            const disminuir =
-                modal.querySelector<HTMLButtonElement>(".disminuir-letra");
-            const botonTema =
-                modal.querySelector<HTMLButtonElement>(".alternar-tema");
-
-            if (textos.length === 0 || !aumentar || !disminuir || !botonTema) return;
-
-            let tamano = 16;
-
-            botonTema.addEventListener("click", () => {
-                const oscuro = modal.classList.toggle("modo-oscuro");
-                botonTema.textContent = oscuro
-                    ? "☀ Modo claro"
-                    : "☾ Modo oscuro";
-                botonTema.setAttribute("aria-pressed", String(oscuro));
-            });
-
-            aumentar.addEventListener("click", () => {
-                tamano = Math.min(tamano + 2, 22);
-                textos.forEach((texto) => {
-                    texto.style.fontSize = `${tamano}px`;
-                });
-            });
-
-            disminuir.addEventListener("click", () => {
-                tamano = Math.max(tamano - 2, 10);
-                textos.forEach((texto) => {
-                    texto.style.fontSize = `${tamano}px`;
-                });
-            });
-        });
-    }
-
-    // Listeners globales: se registran una sola vez
-    const w = window as any;
-    if (!w.__poesiaListeners) {
-        w.__poesiaListeners = true;
-
-        document.addEventListener("click", (evento) => {
-            const objetivo = evento.target;
-            if (!(objetivo instanceof Element)) return;
-
-            // Abrir
-            const botonAbrir =
-                objetivo.closest<HTMLButtonElement>(".btn-abrir");
-            if (botonAbrir && botonAbrir.closest("#poesia")) {
-                const idModal = botonAbrir.dataset.target;
-                const modal = idModal
-                    ? document.querySelector<HTMLElement>(
-                          `.modal[data-portal='poesia']#${idModal}`,
-                      )
-                    : null;
-
-                if (modal) {
-                    modal.classList.add("abierto");
-                    actualizarBloqueoScroll();
-                    modal.querySelector<HTMLButtonElement>(".cerrar")?.focus();
-                }
-                return;
-            }
-
-            // Cerrar con la X
-            const botonCerrar = objetivo.closest<HTMLButtonElement>(
-                ".modal[data-portal='poesia'] .cerrar",
-            );
-            if (botonCerrar) {
-                botonCerrar
-                    .closest<HTMLElement>(".modal")
-                    ?.classList.remove("abierto");
-                actualizarBloqueoScroll();
-                return;
-            }
-
-            // Cerrar al pulsar el fondo oscuro
-            if (
-                objetivo instanceof HTMLElement &&
-                objetivo.matches(".modal[data-portal='poesia']")
-            ) {
-                objetivo.classList.remove("abierto");
-                actualizarBloqueoScroll();
+        btnAumentar?.addEventListener('click', () => {
+            if (tamanoActual < 1.45) {
+                tamanoActual += 0.1;
+                actualizarTamano();
             }
         });
 
-        document.addEventListener("keydown", (evento) => {
-            if (evento.key === "Escape") cerrarTodos();
+        btnDisminuir?.addEventListener('click', () => {
+            if (tamanoActual > 0.85) {
+                tamanoActual -= 0.1;
+                actualizarTamano();
+            }
+        });
+
+        btnReset?.addEventListener('click', () => {
+            tamanoActual = 1.05;
+            actualizarTamano();
+        });
+
+        btnModo?.addEventListener('click', () => {
+            document.body.classList.toggle('modo-lectura-sepia');
+            const estaEnSepia = document.body.classList.contains('modo-lectura-sepia');
+            if (btnModo) {
+                btnModo.textContent = estaEnSepia ? "Modo claro" : "Modo oscuro";
+            }
         });
     }
 
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", inicializarModales, {
-            once: true,
-        });
+    document.addEventListener('astro:page-load', inicializarLector);
+    if (document.readyState !== 'loading') {
+        inicializarLector();
     } else {
-        inicializarModales();
+        document.addEventListener('DOMContentLoaded', inicializarLector);
     }
-
-    document.addEventListener("astro:page-load", inicializarModales);
-
-// Control del acordeón dentro del modal
-document.addEventListener("click", (evento) => {
-    const objetivo = evento.target;
-    if (!(objetivo instanceof Element)) return;
-
-    const btnAcordeon = objetivo.closest<HTMLButtonElement>(".btn-acordeon");
-    if (!btnAcordeon) return;
-
-    const itemActual = btnAcordeon.closest<HTMLElement>(".item-acordeon");
-    if (!itemActual) return;
-
-    const modalPadre = itemActual.closest<HTMLElement>(".modal");
-    if (!modalPadre) return;
-
-    // Opcional: si prefieres que se cierre el anterior al abrir uno nuevo
-    /*
-    modalPadre.querySelectorAll(".item-acordeon").forEach((item) => {
-        if (item !== itemActual) item.classList.remove("activo");
-    });
-    */
-
-    // Alternar la apertura del poema actual hacia abajo
-    itemActual.classList.toggle("activo");
-});
-
 </script>
