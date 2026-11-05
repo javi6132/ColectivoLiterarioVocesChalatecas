@@ -28,7 +28,7 @@ const path = Astro.url.pathname;
       <a href="/sobre-mi" class:list={["nav-link", { active: path.startsWith("/sobre-mi") }]}>SOBRE MÍ</a>
       <a href="/libro" class:list={["nav-link", { active: path.startsWith("/libro") }]}>LIBRO</a>
       <a href="/poesia" class:list={["nav-link", { active: path.startsWith("/poesia") }]}>POESÍA</a>
-      <a href="/galeria" class:list={["nav-link", { active: path.startsWith("/fotos") }]}>GALERÍA</a>
+      <a href="/galeria" class:list={["nav-link", { active: path.startsWith("/galeria") }]}>GALERÍA</a>
       <a href="/contacto" class:list={["nav-link", { active: path.startsWith("/contacto") }]}>CONTACTO</a>
     </nav>
 
@@ -63,18 +63,24 @@ const path = Astro.url.pathname;
 
   /* --------------------------------
      LOGO
+     Puede encogerse y partirse en dos líneas
+     para que el nombre largo no empuje el menú
+     fuera de la pantalla.
   -------------------------------- */
 
   .logo {
     display: flex;
     flex-direction: column;
-    flex-shrink: 0;
+    flex: 0 1 auto;
+    min-width: 0;
   }
 
   .logo-name {
-    font-size: 1.45rem;
-    line-height: 1.1;
+    font-size: 1.3rem;
+    line-height: 1.15;
     letter-spacing: 0.01em;
+    overflow-wrap: break-word;
+    text-wrap: balance;
   }
 
   .logo-subtitle {
@@ -105,6 +111,8 @@ const path = Astro.url.pathname;
     display: flex;
     align-items: center;
     gap: 28px;
+    flex-shrink: 0;
+    white-space: nowrap;
   }
 
   .nav-link {
@@ -167,6 +175,10 @@ const path = Astro.url.pathname;
       gap: 24px;
     }
 
+    .logo-name {
+      font-size: 1.15rem;
+    }
+
     .navigation {
       gap: 18px;
     }
@@ -187,10 +199,11 @@ const path = Astro.url.pathname;
     .header-container {
       min-height: 70px;
       gap: 16px;
+      padding: 8px 0;
     }
 
     .logo-name {
-      font-size: 1.25rem;
+      font-size: 1.05rem;
     }
 
     /* Botón hamburguesa */
@@ -251,6 +264,7 @@ const path = Astro.url.pathname;
       flex-direction: column;
       align-items: stretch;
       gap: 0;
+      white-space: normal;
 
       background: #d4cbc4;
       border-top: 1px solid rgba(0, 0, 0, 0.12);
@@ -302,7 +316,7 @@ const path = Astro.url.pathname;
   @media (max-width: 380px) {
 
     .logo-name {
-      font-size: 1.1rem;
+      font-size: 0.95rem;
     }
 
     .logo-subtitle {
