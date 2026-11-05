@@ -29,10 +29,12 @@ const poema = {
   autor: "",
 };
 
-const galeriaPreview = [
-  { src: "/imagenes/contacto.jpg", alt: "Foto del colectivo 1" },
-  { src: "/imagenes/galeria1.jpg", alt: "Foto del colectivo 2" },
-  { src: "/imagenes/galeria2s.jpg", alt: "Foto del colectivo 3" },
+// Reels que se muestran en "Momentos del colectivo".
+// Puedes cambiarlos por cualquiera de la lista de la galería.
+const reelsPreview = [
+  "https://www.facebook.com/reel/1642400850890747",
+  "https://www.facebook.com/reel/2022541381804764",
+  "https://www.facebook.com/reel/1302387908675615",
 ];
 
 ---
@@ -51,7 +53,7 @@ const galeriaPreview = [
 
         <p class="hero-eyebrow">
           <span class="linea"></span>
-          Colectivo literario · Chalatenango
+          Escritor · Chalatenango
         </p>
 
         <h1>
@@ -64,8 +66,8 @@ const galeriaPreview = [
         <p class="hero-subtitle">Escritor · Poeta · Soñador</p>
 
         <div class="hero-botones">
-          <a href="/sobre-mi" class="boton boton-primario">CONOCE MI HISTORIA</a>
-          <a href="/libro" class="boton boton-secundario">VER EL LIBRO</a>
+          <a href="/sobre-mi" class="boton boton-primario">CONOCE MI HISTORIA</a> 
+          <a href="/poesia" class="boton boton-secundario">LEER POEMAS</a>
         </div>
 
       </div>
@@ -159,31 +161,33 @@ const galeriaPreview = [
 
 
   <!-- =========================
-       GALERÍA
+       GALERÍA (REELS)
   ========================== -->
   <section class="galeria-preview">
     <div class="contenedor">
 
       <div class="seccion-cabecera reveal">
         <div>
-          <p class="etiqueta"><span class="num">04</span> Fotos</p>
-          <h2>Momentos del colectivo</h2>
+          <p class="etiqueta"><span class="num">04</span> Videos</p>
+          <h2>Galería de Videos</h2>
         </div>
-        <a href="/fotos" class="enlace-flecha">
+        <a href="/galeria" class="enlace-flecha">
           Ver galería <span aria-hidden="true">→</span>
         </a>
       </div>
 
-      <div class="galeria-mosaico">
-        {galeriaPreview.map((foto, i) => (
-          <a
-            href="/fotos"
-            class={`tesela tesela-${i + 1} reveal`}
-            style={`--d: ${i * 110}ms`}
-            aria-label="Ver la galería de fotos"
-          >
-            <img src={foto.src} alt={foto.alt} loading="lazy" />
-          </a>
+      <div class="reels-preview">
+        {reelsPreview.map((url, i) => (
+          <div class="reel-card reveal" style={`--d: ${i * 110}ms`}>
+            <iframe
+              src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&width=500`}
+              loading="lazy"
+              title="Reel de Voces Chalatecas"
+              scrolling="no"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
+          </div>
         ))}
       </div>
 
@@ -799,7 +803,7 @@ const galeriaPreview = [
 
 
   /* --------------------------------
-     GALERÍA (MOSAICO)
+     GALERÍA (REELS)
   -------------------------------- */
 
   .galeria-preview {
@@ -818,78 +822,33 @@ const galeriaPreview = [
     margin: 0;
   }
 
-  .galeria-mosaico {
+  .reels-preview {
     display: grid;
-    grid-template-columns: 1.35fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 20px;
-    height: 620px;
+    grid-template-columns: repeat(3, minmax(0, 340px));
+    justify-content: center;
+    gap: 24px;
   }
 
-  /* Cada foto va enmarcada como una impresión: borde de papel + sombra */
-  .tesela {
+  /* Cada reel va enmarcado como una impresión: borde de papel + sombra */
+  .reel-card {
     position: relative;
-    display: block;
-    overflow: hidden;
-    background: #e8e1d7;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    background: #111;
     border: 10px solid #fbf8f3;
     box-shadow:
       0 0 0 1px var(--linea),
       0 24px 44px -26px rgba(39, 35, 31, 0.4);
-    transition: box-shadow 0.5s ease;
+    overflow: hidden;
   }
 
-  .tesela:hover {
-    box-shadow:
-      0 0 0 1px var(--color-accent),
-      0 30px 52px -26px rgba(39, 35, 31, 0.5);
-  }
-
-  .tesela-1 {
-    grid-row: 1 / span 2;
-  }
-
-  /* Número de la foto */
-  .tesela::before {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    z-index: 2;
-    padding: 5px 9px;
-    background: rgba(251, 248, 243, 0.92);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.64rem;
-    letter-spacing: 0.14em;
-    color: var(--color-text);
-  }
-
-  .tesela-1::before { content: "01"; }
-  .tesela-2::before { content: "02"; }
-  .tesela-3::before { content: "03"; }
-
-  .tesela img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    transition: transform 0.9s var(--ease-suave);
-  }
-
-  .tesela::after {
-    content: "";
+  .reel-card iframe {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(39, 35, 31, 0) 55%, rgba(39, 35, 31, 0.28) 100%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-
-  .tesela:hover img {
-    transform: scale(1.05);
-  }
-
-  .tesela:hover::after {
-    opacity: 1;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
   }
 
 
@@ -980,10 +939,6 @@ const galeriaPreview = [
       padding: 44px 28px;
     }
 
-    .galeria-mosaico {
-      height: 520px;
-    }
-
   }
 
 
@@ -1055,10 +1010,6 @@ const galeriaPreview = [
       padding: 48px 22px;
     }
 
-    .tesela {
-      border-width: 6px;
-    }
-
     .galeria-preview {
       padding-bottom: 72px;
     }
@@ -1102,16 +1053,20 @@ const galeriaPreview = [
       margin-bottom: 30px;
     }
 
-    .galeria-mosaico {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 260px 190px;
-      height: auto;
-      gap: 10px;
+    /* Reels en carrusel horizontal */
+    .reels-preview {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 8px;
     }
 
-    .tesela-1 {
-      grid-column: 1 / -1;
-      grid-row: 1;
+    .reel-card {
+      flex: 0 0 78%;
+      max-width: 300px;
+      border-width: 6px;
+      scroll-snap-align: center;
     }
 
     .cta-contenido {

@@ -6,8 +6,8 @@ const path = Astro.url.pathname;
   <div class="header-container">
 
     <a href="/" class="logo">
-      <span class="logo-name">Voces Chalatecas</span>
-      <span class="logo-subtitle">COLECTIVO · LITERARIO</span>
+      <span class="logo-name">Escritor Juan Gerardo Alfaro Escobar</span>
+
     </a>
 
     <!-- Botón hamburguesa (solo visible en móvil) -->
@@ -28,7 +28,7 @@ const path = Astro.url.pathname;
       <a href="/sobre-mi" class:list={["nav-link", { active: path.startsWith("/sobre-mi") }]}>SOBRE MÍ</a>
       <a href="/libro" class:list={["nav-link", { active: path.startsWith("/libro") }]}>LIBRO</a>
       <a href="/poesia" class:list={["nav-link", { active: path.startsWith("/poesia") }]}>POESÍA</a>
-      <a href="/fotos" class:list={["nav-link", { active: path.startsWith("/fotos") }]}>FOTOS</a>
+      <a href="/galeria" class:list={["nav-link", { active: path.startsWith("/fotos") }]}>GALERÍA</a>
       <a href="/contacto" class:list={["nav-link", { active: path.startsWith("/contacto") }]}>CONTACTO</a>
     </nav>
 

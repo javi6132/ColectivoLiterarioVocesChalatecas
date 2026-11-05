@@ -21,16 +21,22 @@ import Layout from "./Layout/Layout.astro";
         <!-- TEXTO PRINCIPAL -->
         <div class="sobre-mi-texto">
           <p class="intro">
-            Soy [nombre], Una frase que resuma su escritura.
+            Soy Juan Gerardo Alfaro Escobar, poeta, educador y orador, nació el 6 de Junio de 1,987 en el Cantón San José, Municipio y Departamento de Chalatenango.
           </p>
 
           <p>
-            [Aquí párrafo corto de porque empezó a escribir y que busca compartir con los poemas
-.]
+            He sido acreedor de notables reconocimientos como gestor cultural: Fundador del Colectivo Literario Voces Chalatecas; presidente del comité de apoyo de la Casa de la Cultura de Chalatenango, ganador de primeros lugares en certámenes de poesía, a nivel local, nacional e internacional.
+
+
           </p>
 
           <p>
-            [Formación]
+            He sido un digno representante de El Salvador en la rama de poesía en España y en Argentina.
+          </p>
+
+          <p>
+            Máster en Docencia Universitaria y Licenciado en Administración de Empresas.
+He desempeñado importantes cargos como ejecutivo de negocios, presentador de televisión y docente universitario.
           </p>
         </div>
 
@@ -113,21 +119,27 @@ import Layout from "./Layout/Layout.astro";
   }
 
   .sobre-mi-texto {
-    max-width: 650px;
-  }
+  max-width: 650px;
+  text-align: justify;
+  hyphens: auto;
+}
 
   .sobre-mi-texto .intro {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    margin: 0 0 20px;
-    color: var(--color-text);
-  }
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin: 0 0 20px;
+  color: var(--color-text);
+  text-align: justify;
+  hyphens: auto;
+}
 
-  .sobre-mi-texto p {
-    line-height: 1.75;
-    margin: 0 0 18px;
-    color: var(--color-text-light);
-  }
+.sobre-mi-texto p {
+  line-height: 1.75;
+  margin: 0 0 18px;
+  color: var(--color-text-light);
+  text-align: justify;
+  hyphens: auto;
+}
 
   /* CITA */
   .cita {
