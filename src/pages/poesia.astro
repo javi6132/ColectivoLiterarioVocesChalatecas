@@ -1867,7 +1867,7 @@ reconstruirte de los escombros.
         --fuente-cuerpo: Georgia, serif;
     }
 
-    body.modo-lectura-sepia {
+    :global(body.modo-lectura-sepia) {
         --color-fondo-pagina: #1f1d1a;
         --color-tarjeta: #292623;
         --color-texto-principal: #e6dfd5;
@@ -1923,7 +1923,7 @@ reconstruirte de los escombros.
     }
 
 .linea-limpia {
-  width: 400px;
+  width: min(400px, 100%); /* nunca más ancha que su contenedor */
   height: 3px;
   background-color: var(--color-acento);
   margin: -10px auto 12px;
@@ -2090,49 +2090,75 @@ reconstruirte de los escombros.
 </style>
 
 <script>
+    const TAMANO_DEFECTO = 1.05;
+    let tamanoActual = TAMANO_DEFECTO;
+
+    function aplicarTamano() {
+        document.querySelectorAll<HTMLElement>('.cuerpo-poema').forEach((el) => {
+            el.style.setProperty('--tamano-poema', `${tamanoActual}rem`);
+        });
+    }
+
+    function aplicarModo(oscuro: boolean) {
+        document.body.classList.toggle('modo-lectura-sepia', oscuro);
+        const btnModo = document.getElementById('alternarModoContraste');
+        if (btnModo) btnModo.textContent = oscuro ? 'Modo claro' : 'Modo oscuro';
+        try {
+            localStorage.setItem('modoLectura', oscuro ? 'oscuro' : 'claro');
+        } catch (e) {}
+    }
+
     function inicializarLector() {
-        let tamanoActual = 1.05;
-        const textoPoemas = document.querySelectorAll<HTMLElement>('.cuerpo-poema');
         const btnAumentar = document.getElementById('aumentarTexto');
         const btnDisminuir = document.getElementById('disminuirTexto');
         const btnReset = document.getElementById('resetTexto');
         const btnModo = document.getElementById('alternarModoContraste');
 
-        function actualizarTamano() {
-            textoPoemas.forEach(el => {
-                el.style.setProperty('--tamano-poema', `${tamanoActual}rem`);
-            });
-        }
+        // Si no estamos en la página de poesía, no hacer nada
+        if (!btnModo) return;
 
-        btnAumentar?.addEventListener('click', () => {
+        // onclick evita listeners duplicados
+        if (btnAumentar) btnAumentar.onclick = () => {
             if (tamanoActual < 1.45) {
-                tamanoActual += 0.1;
-                actualizarTamano();
+                tamanoActual = Math.round((tamanoActual + 0.1) * 100) / 100;
+                aplicarTamano();
             }
-        });
+        };
 
-        btnDisminuir?.addEventListener('click', () => {
+        if (btnDisminuir) btnDisminuir.onclick = () => {
             if (tamanoActual > 0.85) {
-                tamanoActual -= 0.1;
-                actualizarTamano();
+                tamanoActual = Math.round((tamanoActual - 0.1) * 100) / 100;
+                aplicarTamano();
             }
-        });
+        };
 
-        btnReset?.addEventListener('click', () => {
-            tamanoActual = 1.05;
-            actualizarTamano();
-        });
+        if (btnReset) btnReset.onclick = () => {
+            tamanoActual = TAMANO_DEFECTO;
+            aplicarTamano();
+        };
 
-        btnModo?.addEventListener('click', () => {
-            document.body.classList.toggle('modo-lectura-sepia');
-            const estaEnSepia = document.body.classList.contains('modo-lectura-sepia');
-            if (btnModo) {
-                btnModo.textContent = estaEnSepia ? "Modo claro" : "Modo oscuro";
-            }
-        });
+        btnModo.onclick = () => {
+            aplicarModo(!document.body.classList.contains('modo-lectura-sepia'));
+        };
+
+        // Restaurar preferencias guardadas
+        let guardado = null;
+        try { guardado = localStorage.getItem('modoLectura'); } catch (e) {}
+        aplicarModo(guardado === 'oscuro');
+        aplicarTamano();
     }
 
     document.addEventListener('astro:page-load', inicializarLector);
+
+    // El body se reemplaza al navegar: reaplicar el modo SOLO si la página nueva es poesía
+    document.addEventListener('astro:after-swap', (e) => {
+        const esPaginaPoesia = !!(e as any).newDocument?.querySelector('.contenedor-poesia');
+        let guardado = null;
+        try { guardado = localStorage.getItem('modoLectura'); } catch (err) {}
+        document.body.classList.toggle('modo-lectura-sepia', esPaginaPoesia && guardado === 'oscuro');
+    });
+
+    // Respaldo si no se usa ClientRouter / View Transitions
     if (document.readyState !== 'loading') {
         inicializarLector();
     } else {

@@ -1,13 +1,13 @@
 ---
 const path = Astro.url.pathname;
+const esPoesia = path.startsWith("/poesia");
 ---
 
-<header class="header">
+<header class:list={["header", { "es-poesia": esPoesia }]}>
   <div class="header-container">
 
     <a href="/" class="logo">
       <span class="logo-name">Escritor Juan Gerardo Alfaro Escobar</span>
-
     </a>
 
     <!-- Botón hamburguesa (solo visible en móvil) -->
@@ -42,10 +42,30 @@ const path = Astro.url.pathname;
   -------------------------------- */
 
   .header {
+    --header-bg: #d4cbc4;
+    --header-text: var(--color-text);
+    --header-accent: var(--color-accent);
+    --header-line: rgba(0, 0, 0, 0.12);
+    --header-line-soft: rgba(0, 0, 0, 0.08);
+    --header-shadow: rgba(0, 0, 0, 0.15);
+
     position: relative;
     z-index: 10;
     width: 100%;
-    background: #d4cbc4;
+    background: var(--header-bg);
+    border-bottom: 1px solid transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Modo oscuro: SOLO en la página de poesía */
+  :global(body.modo-lectura-sepia) .header.es-poesia {
+    --header-bg: #24221f;
+    --header-text: #e6dfd5;
+    --header-accent: #d4a359;
+    --header-line: rgba(255, 255, 255, 0.12);
+    --header-line-soft: rgba(255, 255, 255, 0.07);
+    --header-shadow: rgba(0, 0, 0, 0.5);
+    border-bottom-color: #3d3934;
   }
 
   .header-container {
@@ -63,9 +83,6 @@ const path = Astro.url.pathname;
 
   /* --------------------------------
      LOGO
-     Puede encogerse y partirse en dos líneas
-     para que el nombre largo no empuje el menú
-     fuera de la pantalla.
   -------------------------------- */
 
   .logo {
@@ -81,6 +98,8 @@ const path = Astro.url.pathname;
     letter-spacing: 0.01em;
     overflow-wrap: break-word;
     text-wrap: balance;
+    color: var(--header-text);
+    transition: color 0.3s ease;
   }
 
   .logo-subtitle {
@@ -124,7 +143,7 @@ const path = Astro.url.pathname;
     font-size: 0.75rem;
     letter-spacing: 0.05em;
 
-    color: var(--color-text);
+    color: var(--header-text);
 
     transition:
       color 0.25s ease,
@@ -142,13 +161,13 @@ const path = Astro.url.pathname;
     width: 0;
     height: 1px;
 
-    background: var(--color-accent);
+    background: var(--header-accent);
 
     transition: width 0.25s ease;
   }
 
   .nav-link:hover {
-    color: var(--color-accent);
+    color: var(--header-accent);
   }
 
   .nav-link:hover::after {
@@ -156,12 +175,12 @@ const path = Astro.url.pathname;
   }
 
   .nav-link.active {
-    color: var(--color-text);
+    color: var(--header-text);
   }
 
   .nav-link.active::after {
     width: 100%;
-    background: var(--color-text);
+    background: var(--header-text);
   }
 
 
@@ -220,13 +239,13 @@ const path = Astro.url.pathname;
       padding: 0;
 
       background: transparent;
-      border: 1px solid rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--header-line);
       border-radius: 4px;
       cursor: pointer;
     }
 
     .menu-toggle:focus-visible {
-      outline: 2px solid var(--color-text);
+      outline: 2px solid var(--header-text);
       outline-offset: 2px;
     }
 
@@ -234,11 +253,12 @@ const path = Astro.url.pathname;
       display: block;
       width: 22px;
       height: 2px;
-      background: var(--color-text);
+      background: var(--header-text);
       border-radius: 2px;
       transition:
         transform 0.25s ease,
-        opacity 0.2s ease;
+        opacity 0.2s ease,
+        background-color 0.3s ease;
     }
 
     /* Animación a "X" */
@@ -266,9 +286,9 @@ const path = Astro.url.pathname;
       gap: 0;
       white-space: normal;
 
-      background: #d4cbc4;
-      border-top: 1px solid rgba(0, 0, 0, 0.12);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      background: var(--header-bg);
+      border-top: 1px solid var(--header-line);
+      box-shadow: 0 8px 16px var(--header-shadow);
 
       max-height: 0;
       overflow: hidden;
@@ -288,7 +308,7 @@ const path = Astro.url.pathname;
       padding: 16px 5%;
       font-size: 0.85rem;
       letter-spacing: 0.08em;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid var(--header-line-soft);
     }
 
     .nav-link:last-child {
@@ -303,7 +323,7 @@ const path = Astro.url.pathname;
     /* Página actual: barra lateral */
     .nav-link.active {
       font-weight: bold;
-      box-shadow: inset 4px 0 0 var(--color-text);
+      box-shadow: inset 4px 0 0 var(--header-accent);
     }
 
   }

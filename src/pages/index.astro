@@ -11,14 +11,14 @@ const frase =
 const sobreMi = {
   titulo: "Una voz nacida en Chalatenango",
   texto:
-    "[Historia de  cómo empezó a escribir y  qué lo motivó]",
+    "Soy Juan Gerardo Alfaro Escobar, poeta, educador y orador, nació el 6 de Junio de 1,987 en el Cantón San José, Municipio y Departamento de Chalatenango.",
   imagen: "/imagenes/galeria2.jpg",
 };
 
 const libro = {
   titulo: "Fronteras Prohibidas",
   texto:
-    "[Una sinopsis breve de dos o tres líneas que invite a conocer el libro.]",
+    "Fronteras Prohibidas es una interesante colección de poemas con un toque literario exquisito y de gran calidad que pretende sumergir al lector en una variedad de temáticas que invitan no sólo a disfrutar cada poema si no también, a poder reflexionar en torno a ellos.",
   portada: "/imagenes/poesia/FronterasProhibidas.jpg",
 };
 
@@ -33,8 +33,8 @@ const poema = {
 // Puedes cambiarlos por cualquiera de la lista de la galería.
 const reelsPreview = [
   "https://www.facebook.com/reel/1642400850890747",
-  "https://www.facebook.com/reel/2022541381804764",
-  "https://www.facebook.com/reel/1302387908675615",
+  "https://www.facebook.com/reel/1199803644638030",
+  "https://www.facebook.com/reel/1598133054596823",
 ];
 
 ---
@@ -202,12 +202,11 @@ const reelsPreview = [
     <div class="contenedor">
       <div class="cta-contenido tarjeta reveal">
         <p class="etiqueta centrada etiqueta-clara"><span class="num">05</span> Contacto</p>
-        <h2>¿Escribimos juntos?</h2>
+        <h2>¿Hablamos?</h2>
         <p>
-          Invítanos a un evento, comparte tu voz con el colectivo o
-          simplemente escríbenos.
+          ¿Tienes alguna idea, propuesta o simplemente quieres ponerte en contacto conmigo? Me encantará leerte, conocer lo que tienes para compartir y conversar contigo.
         </p>
-        <a href="/contacto" class="boton boton-claro">ESCRÍBENOS</a>
+        <a href="/contacto" class="boton boton-claro">ESCRÍBEME</a>
       </div>
     </div>
   </section>
@@ -494,23 +493,26 @@ const reelsPreview = [
   -------------------------------- */
 
   .hero {
-    position: relative;
-    min-height: 640px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-  }
-
-  .hero-image {
-    position: absolute;
-    inset: 0;
-    background-image: url("/hero.jpg");
     background-size: cover;
-    background-position: center;
-    z-index: 0;
-    transform-origin: 70% 50%;
-    animation: hero-zoom 2.6s var(--ease-suave) both;
-  }
+    background-repeat: no-repeat;
+    background-position: center top;
+    padding-top: 110px;
+    min-height: 85vh;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  background-image: url("/HERO2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+ 
+  background-position: center top;
+  z-index: 0;
+  
+  transform-origin: 70% 0%;
+  animation: hero-zoom 2.6s var(--ease-suave) both;
+}
 
   @keyframes hero-zoom {
     from { transform: scale(1.07); }
@@ -946,16 +948,18 @@ const reelsPreview = [
      MÓVIL
   -------------------------------- */
 
-  @media (max-width: 700px) {
+  @media (max-width: 600px) {
 
     .hero {
-      min-height: 700px;
+      min-height: 500px;
       align-items: flex-end;
     }
 
     .hero-image {
-      background-position: 65% center;
-    }
+    /* En vertical, sube la imagen y encuádrala hacia la paloma y el libro */
+    background-position: 62% top;
+    transform-origin: 62% 0%;
+  }
 
     .hero-overlay {
       background: linear-gradient(

@@ -1,7 +1,7 @@
 ---
 import Layout from "./Layout/Layout.astro";
 
-// Reels de Facebook: 
+// Reels de Facebook:
 const reels = [
   "https://www.facebook.com/reel/1642400850890747",
   "https://www.facebook.com/reel/2022541381804764",
@@ -81,8 +81,38 @@ const reels = [
   "https://www.facebook.com/reel/1284570348847244",
   "https://www.facebook.com/reel/6040321339421329",
   "https://www.facebook.com/reel/1874885916221384",
-  
 ];
+
+// los videos grabados en horizontal
+
+const horizontales = new Set<string>([
+  "https://www.facebook.com/reel/964740002828985",
+  "https://www.facebook.com/reel/971144599116389",
+  "https://www.facebook.com/reel/1291346599584241",
+  "https://www.facebook.com/reel/927460080237621",
+  "https://www.facebook.com/reel/1912828686109902",
+  "https://www.facebook.com/reel/1163482655933702",
+  "https://www.facebook.com/reel/2156550948204425",
+  "https://www.facebook.com/reel/1223650856277435",
+  "https://www.facebook.com/reel/625215477281866",
+  "https://www.facebook.com/reel/1381700786799464",
+  "https://www.facebook.com/reel/873190925648964",
+  "https://www.facebook.com/reel/699583006556155",
+  "https://www.facebook.com/reel/577826388245893",
+  "https://www.facebook.com/reel/1101491925148375",
+  "https://www.facebook.com/reel/480890441668777",
+  "https://www.facebook.com/reel/4018883015012789",
+  "https://www.facebook.com/reel/1537865333505353",
+  "https://www.facebook.com/reel/1038152101656055",
+  
+  
+  
+]);
+
+const videos = reels.map((url) => ({
+  url,
+  horizontal: horizontales.has(url),
+}));
 ---
 
 <Layout title="Galería | Voces Chalatecas">
@@ -95,12 +125,12 @@ const reels = [
       </p>
 
       <div class="reels-grid">
-        {reels.map((url) => (
-          <div class="reel-card">
+        {videos.map(({ url, horizontal }) => (
+          <div class={`reel-card ${horizontal ? "horizontal" : ""}`}>
             <iframe
-              src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&width=500`}
+              src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&width=${horizontal ? 704 : 340}`}
               loading="lazy"
-              title="Reel de Voces Chalatecas"
+              title="Video de Voces Chalatecas"
               scrolling="no"
               allowfullscreen="true"
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
@@ -136,10 +166,11 @@ const reels = [
     max-width: 700px;
   }
 
-  /* REELS: todos con el mismo tamaño, llenando su columna */
+  /* VIDEOS: verticales por defecto, llenando su columna */
   .reels-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 340px));
+    grid-auto-flow: dense; /* evita huecos entre verticales y horizontales */
     justify-content: center;
     gap: 24px;
     width: 100%;
@@ -153,6 +184,12 @@ const reels = [
     background: #111;
     border-radius: 10px;
     overflow: hidden;
+  }
+
+  /* Video horizontal: ocupa 2 columnas en proporción 16:9 */
+  .reel-card.horizontal {
+    grid-column: span 2;
+    aspect-ratio: 16 / 9;
   }
 
   .reel-card iframe {
@@ -180,6 +217,10 @@ const reels = [
 
     .reels-grid {
       grid-template-columns: minmax(0, 380px);
+    }
+
+    .reel-card.horizontal {
+      grid-column: span 1;
     }
   }
 </style>
